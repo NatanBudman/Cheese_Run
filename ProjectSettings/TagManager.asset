@@ -10,6 +10,7 @@ TagManager:
   - Powers/Gouda
   - Powers/Parmesano
   - PJ
+  - Cheese/CheeseSpawn
   layers:
   - Default
   - TransparentFX

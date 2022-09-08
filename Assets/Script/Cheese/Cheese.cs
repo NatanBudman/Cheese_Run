@@ -14,6 +14,7 @@ public class Cheese : MonoBehaviour
     {
         PlayerCamera = FindObjectOfType<Camera>();
         _cameraWidth = PlayerCamera.transform.position.x - 12;
+        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame
