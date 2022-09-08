@@ -1,4 +1,12 @@
 Library/
+Logs/
+Temp/
+
+
+
+
+
+
 Library/AnnotationManager
 Library/APIUpdater/project-dependencies.graph
 Library/ArtifactDB
