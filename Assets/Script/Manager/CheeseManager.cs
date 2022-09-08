@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Object = System.Object;
 using Random = UnityEngine.Random;
 
@@ -21,7 +22,7 @@ public class CheeseManager : MonoBehaviour
 
         private void Awake()
         {
-            if (instance == null)
+            if (CheeseManager.instance == null)
             {
                 instance = this;
                 DontDestroyOnLoad(gameObject);
@@ -39,6 +40,7 @@ public class CheeseManager : MonoBehaviour
         Pooling.PreLoad(CheesePref,TotalCheeseInGame);
 
         StackCheeses();
+
     }
 
     void StackCheeses()
@@ -54,9 +56,13 @@ public class CheeseManager : MonoBehaviour
 
     void Update()
     {
-        if (_cheesePìla.StackEmpty()) _cheesePìla.ResetPila();
-        
-        InstanciateCheese();
+        if (GameObject.FindWithTag("Cheese/CheeseSpawn") != null)
+        {
+            CheeseSpawn.transform.position = GameObject.FindWithTag("Cheese/CheeseSpawn").transform.position;
+            
+            if (_cheesePìla.StackEmpty()) _cheesePìla.ResetPila();
+             InstanciateCheese();
+        }
     }
     
     float InstanciateCheeseInGame;
