@@ -13,7 +13,9 @@ public class Cheese : MonoBehaviour
     void Start()
     {
         PlayerCamera = FindObjectOfType<Camera>();
+        
         _cameraWidth = PlayerCamera.transform.position.x - 12;
+        
         DontDestroyOnLoad(gameObject);
     }
 
@@ -31,8 +33,6 @@ public class Cheese : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.CompareTag("PJ") != null) this.gameObject.SetActive(false);
-    }
+
+
 }

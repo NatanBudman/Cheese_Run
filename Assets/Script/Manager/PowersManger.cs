@@ -5,12 +5,22 @@ using UnityEngine;
 public class PowersManger : MonoBehaviour
 {
     public Dictionary<string, int> ItemDictionary = new Dictionary<string, int>();
+
+    [SerializeField] private Points _points;
     
     [SerializeField] private GameObject[] Items;
+
+    [SerializeField] private PlayerController _playerController;
+    
+    
 
     void Start()
     {
         GetPowersNames();
+
+        _playerController = FindObjectOfType<PlayerController>();
+
+        _points = FindObjectOfType<Points>();
     }
 
     private void GetPowersNames()
@@ -43,6 +53,7 @@ public class PowersManger : MonoBehaviour
 
     private void MuzzaPower()
     {
+        _playerController.IsInvencible = true;
         Debug.Log("Una muzza");
     }
     private void CheddarPower()
@@ -51,10 +62,11 @@ public class PowersManger : MonoBehaviour
     }
     private void GoudaPower()
     {
+        _points.MultiplicatorPoint = 2;
         Debug.Log("Un Gouda");
     }
     private void ParmesanoPower()
     {
-        Debug.Log("Una Parmesano");
+        _playerController.BustSpeedDuration = 5;
     }
 }

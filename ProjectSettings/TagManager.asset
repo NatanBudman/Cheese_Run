@@ -11,6 +11,7 @@ TagManager:
   - Powers/Parmesano
   - PJ
   - Cheese/CheeseSpawn
+  - Cheese/Cheese
   layers:
   - Default
   - TransparentFX
