@@ -5,22 +5,23 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private Points _points;
     public PowersManger Powers;
     
     public Rigidbody2D rb;
     public float moveSpeed = 5;
-
-    public bool hasMuzza;
-    public bool hasCheddar;
-    public bool hasGouda;
-    public bool hasParm;
-
-
+    public float MaxSpeed = 10;
+    
+    public bool IsInvencible;
+    [SerializeField] private int InvencibilityDuration; 
+    public int BustSpeedDuration;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        
+        _points = FindObjectOfType<Points>();
     }
 
     // Update is called once per frame
@@ -33,12 +34,18 @@ public class PlayerController : MonoBehaviour
         {
             Invoke("ResetPlayer()",3);
         }
+
+        if (IsInvencible)
+        {
+            Invoke("InvensibilityDisable()", InvencibilityDuration);
+        }
+
+        if (BustSpeedDuration >= 1 && moveSpeed <= MaxSpeed) moveSpeed += 1 * Time.deltaTime;
+        else if (BustSpeedDuration <= 0 && moveSpeed >= 5.1f) moveSpeed -= 1 * Time.deltaTime;
+
     }
 
-    private void ResetPlayer()
-    {
-        this.gameObject.SetActive(true);
-    }
+    private void InvensibilityDisable() =>   IsInvencible = false;
 
     private GameObject ItemsCollision;
 
@@ -49,6 +56,12 @@ public class PlayerController : MonoBehaviour
             this.gameObject.SetActive(false);
         }
 
+        if (other.gameObject.CompareTag("Cheese/Cheese"))
+        {
+            _points.GetCheesePoint(1);
+            other.gameObject.SetActive(false);
+        }
+        
         ItemsCollision = other.gameObject;
         
         if (ItemsCollision != null)
@@ -62,6 +75,7 @@ public class PlayerController : MonoBehaviour
         }
        
     }
+
 
     private void OnTriggerExit(Collider other)
     {
