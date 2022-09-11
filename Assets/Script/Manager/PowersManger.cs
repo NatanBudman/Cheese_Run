@@ -1,34 +1,38 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PowersManger : MonoBehaviour
 {
-    public Dictionary<string, int> ItemDictionary = new Dictionary<string, int>();
+    public Dictionary<GameObject, string> PowerKeyDictionary = new Dictionary<GameObject, string>();
 
     [SerializeField] private Points _points;
     
-    [SerializeField] private GameObject[] Items;
-
     [SerializeField] private PlayerController _playerController;
-    
-    
+
+    [SerializeField] private GameObject[] _powers;
+
+    public GameObject PowerPickUp;
 
     void Start()
     {
         GetPowersNames();
 
         _playerController = FindObjectOfType<PlayerController>();
-
+        
         _points = FindObjectOfType<Points>();
+        
+   
     }
 
     private void GetPowersNames()
     {
-        for (int i = 0; i < Items.Length; i++)
-        {
-            ItemDictionary.Add(Items[i].gameObject.name,Items[i].GetComponent<ObjectDataScript>().ID);
-        }
+        
+    }
+
+    private void Update()
+    {
     }
 
     public void SelectedPower(string PowerTag) 
@@ -53,20 +57,21 @@ public class PowersManger : MonoBehaviour
 
     private void MuzzaPower()
     {
-        _playerController.IsInvencible = true;
-        Debug.Log("Una muzza");
+        // invencible
     }
     private void CheddarPower()
     {
-        Debug.Log("Un Cheddar");
     }
     private void GoudaPower()
     {
         _points.MultiplicatorPoint = 2;
-        Debug.Log("Un Gouda");
     }
+    
+    // Queue Powers interface \\
     private void ParmesanoPower()
     {
-        _playerController.BustSpeedDuration = 5;
+        
     }
+
+   
 }

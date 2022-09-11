@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-
+    [SerializeField] private PlayerController _playerController;
     [SerializeField] private Points _points;
     public int CheeseRecolected;
     
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         _points = FindObjectOfType<Points>();
+        _playerController = FindObjectOfType<PlayerController>();
     }
 
     // Update is called once per frame
@@ -23,6 +25,7 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.R)) SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
 
     public void VictoryConditions()
     {
@@ -42,10 +45,14 @@ public class GameManager : MonoBehaviour
 
     public void LoseConditions()
     {
-        if (_points.CheeseNeed <= CheeseRecolected - CheeseRecolected * 25 / 100)
-        {
-            
-        }
+        if (_points.CheeseNeed <= CheeseRecolected - CheeseRecolected * 25 / 100) Lose();
+
+        if (_playerController.gameObject.activeSelf == false) Lose();
+    }
+
+    private void Lose()
+    {
+        
     }
 
 }
