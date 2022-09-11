@@ -16,12 +16,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int InvencibilityDuration; 
     public int BustSpeedDuration;
 
+    
+    
+
+    
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         
         _points = FindObjectOfType<Points>();
+       
     }
 
     // Update is called once per frame
@@ -37,7 +42,7 @@ public class PlayerController : MonoBehaviour
 
         if (IsInvencible)
         {
-            Invoke("InvensibilityDisable()", InvencibilityDuration);
+            Debug.Log("es invencible");
         }
 
         if (BustSpeedDuration >= 1 && moveSpeed <= MaxSpeed) moveSpeed += 1 * Time.deltaTime;
@@ -45,7 +50,6 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void InvensibilityDisable() =>   IsInvencible = false;
 
     private GameObject ItemsCollision;
 
@@ -61,29 +65,11 @@ public class PlayerController : MonoBehaviour
             _points.GetCheesePoint(1);
             other.gameObject.SetActive(false);
         }
-        
-        ItemsCollision = other.gameObject;
-        
-        if (ItemsCollision != null)
-        {
-            ObjectDataScript itemID = ItemsCollision.GetComponent<ObjectDataScript>();
-
-            if (Powers.ItemDictionary.ContainsValue(itemID.ID))
-            {
-                SaizedItem(ItemsCollision.tag);
-            }
-        }
        
     }
 
 
-    private void OnTriggerExit(Collider other)
-    {
-        ItemsCollision = null;
-    }
 
-    void SaizedItem(string tag)
-    {
-        Powers.SelectedPower(tag);
-    }
+
+   
 }

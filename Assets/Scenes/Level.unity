@@ -289,12 +289,72 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _points: {fileID: 2043089722}
-  Items:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   _playerController: {fileID: 1719829184}
+  _powers:
+  - {fileID: 912186134}
+  PowerPickUp: {fileID: 0}
+--- !u!1001 &905587518
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3284963295503776147, guid: f7770e062552844479ff8da3fba1c938, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3284963295503776147, guid: f7770e062552844479ff8da3fba1c938, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.8999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 3284963295503776147, guid: f7770e062552844479ff8da3fba1c938, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.7429
+      objectReference: {fileID: 0}
+    - target: {fileID: 3284963295503776147, guid: f7770e062552844479ff8da3fba1c938, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3284963295503776147, guid: f7770e062552844479ff8da3fba1c938, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3284963295503776147, guid: f7770e062552844479ff8da3fba1c938, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3284963295503776147, guid: f7770e062552844479ff8da3fba1c938, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3284963295503776147, guid: f7770e062552844479ff8da3fba1c938, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3284963295503776147, guid: f7770e062552844479ff8da3fba1c938, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3284963295503776147, guid: f7770e062552844479ff8da3fba1c938, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3284963295503776147, guid: f7770e062552844479ff8da3fba1c938, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3284963295503776148, guid: f7770e062552844479ff8da3fba1c938, type: 3}
+      propertyPath: m_Name
+      value: Muzza
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f7770e062552844479ff8da3fba1c938, type: 3}
+--- !u!1 &912186134 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3284963295503776148, guid: f7770e062552844479ff8da3fba1c938, type: 3}
+  m_PrefabInstance: {fileID: 905587518}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1051366905
 GameObject:
   m_ObjectHideFlags: 0
@@ -655,8 +715,10 @@ MonoBehaviour:
   Powers: {fileID: 734575771}
   rb: {fileID: 0}
   moveSpeed: 5
+  MaxSpeed: 10
   IsInvencible: 0
   InvencibilityDuration: 0
+  BustSpeedDuration: 0
 --- !u!50 &1719829185
 Rigidbody2D:
   serializedVersion: 4

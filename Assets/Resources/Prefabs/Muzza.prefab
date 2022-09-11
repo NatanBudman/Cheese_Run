@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3284963295503776145}
   - component: {fileID: 3284963295503776146}
   - component: {fileID: -9106317927856051965}
+  - component: {fileID: 5414970965311016124}
   m_Layer: 0
   m_Name: Muzza
   m_TagString: Powers/Muzza
@@ -125,3 +126,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 6
+--- !u!114 &5414970965311016124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3284963295503776148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bbe2c39296824c4ea17f992d2fc7ef1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Player: {fileID: 0}
+  powersManger: {fileID: 0}
