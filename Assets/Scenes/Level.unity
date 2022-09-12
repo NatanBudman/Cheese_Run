@@ -214,7 +214,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &50396729
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1711,8 +1711,7 @@ MonoBehaviour:
   - {fileID: 840570787}
   - {fileID: 1421427327}
   OptionsPanel: {fileID: 1863207499}
-  LevelStars: 0
-  NextLevelSceneName: 
+  NextLevelSceneName: Scenes/Menu
 --- !u!1 &912186134 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3284963295503776148, guid: f7770e062552844479ff8da3fba1c938, type: 3}
