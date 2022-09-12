@@ -16,7 +16,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int InvencibilityDuration; 
     public int BustSpeedDuration;
 
-    
+    public SpriteRenderer sprite;
+
     
 
     
@@ -51,13 +52,12 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    private GameObject ItemsCollision;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Obstacle"))
         {
-            this.gameObject.SetActive(false);
+            StartCoroutine(FlashRed());
         }
 
         if (other.gameObject.CompareTag("Cheese/Cheese"))
@@ -69,7 +69,22 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    public IEnumerator FlashRed()
+    {
+        sprite.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        sprite.color = Color.white;
+        yield return new WaitForSeconds(0.1f);
+        sprite.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        sprite.color = Color.white;
 
+    }
 
-   
+    public IEnumerator Jump()
+    {
+        Physics2D.IgnoreLayerCollision(3, 6, true);
+        yield return new WaitForSeconds(2f);
+        Physics2D.IgnoreLayerCollision(3, 6, false);
+    }
 }

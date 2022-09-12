@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
             Canvas.StarsEarned(3);
         }
 
-        if (CheeseRecolected >= FirstStar && !isPlayerLive)
+        if (CheeseRecolected >= FirstStar && !isPlayerLive || CheeseRecolected == _points.CheeseNeed)
         {
             Victory();
             isVictory = true;
