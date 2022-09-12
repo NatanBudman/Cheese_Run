@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
     public int BustSpeedDuration;
 
     public SpriteRenderer sprite;
-
     
 
     
@@ -49,15 +48,18 @@ public class PlayerController : MonoBehaviour
         if (BustSpeedDuration >= 1 && moveSpeed <= MaxSpeed) moveSpeed += 1 * Time.deltaTime;
         else if (BustSpeedDuration <= 0 && moveSpeed >= 5.1f) moveSpeed -= 1 * Time.deltaTime;
 
+        if (life < 1) gameObject.SetActive(false);
+        
     }
 
-
+    private int life = 2;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Obstacle"))
         {
             StartCoroutine(FlashRed());
+            life--;
         }
 
         if (other.gameObject.CompareTag("Cheese/Cheese"))
