@@ -28,7 +28,7 @@ public class PowersManger : MonoBehaviour
 
     private void GetPowersNames()
     {
-        
+      
     }
 
     private void Update()
