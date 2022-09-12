@@ -5,14 +5,21 @@ TagManager:
   serializedVersion: 2
   tags:
   - Obstacle
+  - Powers/Muzza
+  - Powers/Cheddar
+  - Powers/Gouda
+  - Powers/Parmesano
+  - PJ
+  - Cheese/CheeseSpawn
+  - Cheese/Cheese
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Obstacle
+  - 
   - Water
   - UI
-  - Player
+  - 
   - 
   - 
   - 
@@ -44,4 +51,7 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Characters
+    uniqueID: 219241187
     locked: 0

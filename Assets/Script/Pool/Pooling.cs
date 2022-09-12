@@ -8,10 +8,11 @@ public class Pooling : MonoBehaviour
 {
     public static Pooling instance;
     
-    private static List<GameObject> pool;
+    public static List<GameObject> pool;
 
-    private static Transform Poolparent;
+    public static Transform Poolparent;
 
+    private static int IDs = 0;
     private void Awake()
     {
         if (Pooling.instance == null)
@@ -25,19 +26,33 @@ public class Pooling : MonoBehaviour
         }
         pool = new List<GameObject>(Resources.LoadAll<GameObject>("Prefabs"));
         
+        Poolparent = this.gameObject.transform;
+
     }
 
     void Start()
     {
-        Poolparent = this.gameObject.transform;
+       
         GetID();
     }
 
+    static void DisableParentChilds()
+    {
+        for (int i = 0; i < Poolparent.childCount; i++)
+        {
+            var ChildObject = Poolparent.transform.GetChild(i).gameObject;
+            ChildObject.SetActive(false);
+        }
+    }
     void GetID()
     {
         for (int i = 0; i < pool.Count; i++)
         {
-            pool[i].AddComponent<GetIDScript>().ID = i;
+            if( pool[i].GetComponent<ObjectDataScript>() == null)
+            {
+                pool[i].AddComponent<ObjectDataScript>().ID = IDs;
+            }
+            IDs++;
         }
     }
 
@@ -49,7 +64,7 @@ public class Pooling : MonoBehaviour
         {
             var ChildObject = Poolparent.transform.GetChild(i).gameObject;
             
-            if (gameObject.GetComponent<GetIDScript>().ID == ChildObject.GetComponent<GetIDScript>().ID)
+            if (gameObject.GetComponent<ObjectDataScript>().ID == ChildObject.GetComponent<ObjectDataScript>().ID)
             {
                 Debug.Log($"Hay Objecto {ChildObject.name}");
                 SetPosition(ChildObject,transform,quaternion,parent);
@@ -72,8 +87,6 @@ public class Pooling : MonoBehaviour
         }
         
         gameObject = null;
-          
-        
     }
 
     private static void SetPosition(GameObject gameObject, Transform transform, Quaternion quaternion, Transform parent)
@@ -90,18 +103,21 @@ public class Pooling : MonoBehaviour
         gameObject.transform.SetParent(Poolparent);
     }
 
-    public static void PreLoad(GameObject gameObject,int GameObejctAmount)
+    public static void PreLoad(GameObject PreLoadObject,int GameObejctAmount)
     {
         if (pool.Count > 0)
         {
             for (int i = 0; i < GameObejctAmount; i++)
             {
-                Instantiate(gameObject, Poolparent.transform.position, quaternion.identity, Poolparent);
+                Instantiate(PreLoadObject, Poolparent.transform.position, quaternion.identity, Poolparent);
+                
                 if (i == GameObejctAmount)
                 {
                     break;
                 }
             }
+
+            DisableParentChilds();
         }
     }
 
