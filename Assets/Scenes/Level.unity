@@ -2205,6 +2205,9 @@ MonoBehaviour:
   _playerController: {fileID: 1719829184}
   _points: {fileID: 2043089722}
   CheeseRecolected: 0
+  BackgroundScrollers:
+  - {fileID: 2058361041}
+  - {fileID: 1845237666}
 --- !u!4 &1179091848
 Transform:
   m_ObjectHideFlags: 0
@@ -3015,6 +3018,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colider: {fileID: 0}
   rb: {fileID: 0}
+  scrollSpeed: -4
 --- !u!50 &1845237667
 Rigidbody2D:
   serializedVersion: 4
@@ -3409,6 +3413,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colider: {fileID: 0}
   rb: {fileID: 0}
+  scrollSpeed: -4
 --- !u!50 &2058361042
 Rigidbody2D:
   serializedVersion: 4
