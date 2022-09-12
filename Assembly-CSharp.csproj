@@ -48,6 +48,7 @@
      <Compile Include="Assets\Script\Strategy\ICheesePila.cs" />
      <Compile Include="Assets\Script\Manager\GameManager.cs" />
      <Compile Include="Assets\Script\BackgroundScroller.cs" />
+     <Compile Include="Assets\Script\Canvas\LevelCanvas.cs" />
      <Compile Include="Assets\Script\Powers\Powers.cs" />
      <Compile Include="Assets\Script\Menu.cs" />
      <Compile Include="Assets\Script\LevelButton.cs" />
