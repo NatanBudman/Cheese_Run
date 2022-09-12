@@ -10,7 +10,7 @@ public class BackgroundScroller : MonoBehaviour
     public Rigidbody2D rb;
 
     private float width;
-    private float scrollSpeed = -4f;
+    public float scrollSpeed = -4f;
 
     // Start is called before the first frame update
     void Start()

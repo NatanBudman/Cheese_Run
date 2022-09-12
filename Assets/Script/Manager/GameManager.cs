@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Points _points;
     public int CheeseRecolected;
 
+    public BackgroundScroller[] BackgroundScrollers;
+
     private bool isVictory = false;
     private bool isPlayerLive = true;
     void Start()
@@ -90,9 +92,12 @@ public class GameManager : MonoBehaviour
         return isVictory;
     }
 
-    public void LoseConditions()
+    private void LoseConditions()
     {
-        if (_playerController.gameObject.activeSelf == false && CheeseRecolected <= _points.CheeseNeed * 25 / 100) Lose();
+        if (_playerController.gameObject.activeSelf == false && CheeseRecolected <= _points.CheeseNeed * 25 / 100)
+        {
+             Lose();
+        }
     }
 
     private void Lose()
