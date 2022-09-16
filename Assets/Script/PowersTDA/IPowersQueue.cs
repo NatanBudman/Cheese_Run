@@ -4,13 +4,13 @@ using UnityEngine;
 
 public interface IPowersQueue
 {
-    void Initialization();
+    void Initialization(int amount);
     
-    void StackQueuePowers(Powers powers);
+    void StackQueuePowers(GameObject powers, string TypeObject);
     
     void UnstackQueuePower();
     
     bool EmptyQueue();
     
-    int TopPower();
+    GameObject FirstPower();
 }

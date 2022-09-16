@@ -26,6 +26,6 @@ public class CheesePìla : MonoBehaviour,ICheesePila
 
     public bool StackEmpty() =>      _index == 0;
 
-    public void ResetPila() =>       _index = _Cheeses.Length;
+    public void ResetPila() =>       _index = _Cheeses.Length - 1;
 
 }

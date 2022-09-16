@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3109541396600731897}
-  - component: {fileID: 3109541396600731898}
   m_Layer: 0
   m_Name: CheeseManager
   m_TagString: Untagged
@@ -34,23 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3109541396600731898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3109541396600731896}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9035830b5e022034aa7db1a048e45aa2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  "_cheeseP\xECla": {fileID: 8191768508640497406}
-  TotalCheeseInGame: 15
-  CheesePref: {fileID: 8917681460776304238, guid: 4f39b41c41ac7b341904cf35df5c763a, type: 3}
-  CheeseSpawn: {fileID: 7129248992435672320}
-  MaxDistanceToInstanciateCheese: 4
 --- !u!1 &4007623277439004676
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,17 +121,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3afd2d7d184a14a48a0e9d3f533881b2, type: 3}
---- !u!114 &8191768508640497406 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4137322335356780783, guid: 3afd2d7d184a14a48a0e9d3f533881b2, type: 3}
-  m_PrefabInstance: {fileID: 5243802609969827345}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56e32c42980d43c4d9faaedabdbf5063, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &8191768508640497407 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4137322335356780782, guid: 3afd2d7d184a14a48a0e9d3f533881b2, type: 3}

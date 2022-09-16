@@ -5,16 +5,28 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private Points _points;
-    public PowersManger Powers;
-    
-    public Rigidbody2D rb;
-    public float moveSpeed = 5;
-    public float MaxSpeed = 10;
-    
-    public bool IsInvencible;
-    [SerializeField] private int InvencibilityDuration; 
-    public int BustSpeedDuration;
+    #region Coponents
+
+        [SerializeField] private Points _points;
+        public PowersManger Powers;
+        public Rigidbody2D rb;
+    #endregion
+
+    #region Movement
+
+      public float moveSpeed = 5;
+      public float MaxSpeed = 10;
+
+    #endregion
+
+    #region PowersEvents
+
+        public bool IsInvencible;
+        [SerializeField] private int InvencibilityDuration; 
+        public int BustSpeedDuration;
+
+    #endregion
+
 
     public SpriteRenderer sprite;
     
@@ -52,7 +64,7 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    private int life = 2;
+    public int life = 2;
 
     private void OnTriggerEnter2D(Collider2D other)
     {

@@ -35,6 +35,7 @@ public class CheeseManager : MonoBehaviour
 
     void Start()
     {
+        // Inicializa la cola con los quesos totales que va a ver en el juego
         _cheesePìla.Initialization(TotalCheeseInGame);
 
         Pooling.PreLoad(CheesePref,TotalCheeseInGame);
@@ -48,7 +49,7 @@ public class CheeseManager : MonoBehaviour
         for (int i = 0; i < Pooling.Poolparent.childCount; i++)
         {
             var ChildsPool = Pooling.Poolparent.GetChild(i).gameObject;
-            
+            // Agrega los quesos del pool a la cola
             if (ChildsPool.GetComponent<Cheese>() != null) _cheesePìla.StackCheese(ChildsPool);
 
         }
@@ -58,26 +59,29 @@ public class CheeseManager : MonoBehaviour
     {
         if (GameObject.FindWithTag("Cheese/CheeseSpawn") != null)
         {
+            // "Instancea" los quesos
             CheeseSpawn.transform.position = GameObject.FindWithTag("Cheese/CheeseSpawn").transform.position;
-            
+            // Resetea la cola
             if (_cheesePìla.StackEmpty()) _cheesePìla.ResetPila();
-             InstanciateCheese();
+             InstantiateCheese();
         }
     }
     
     float InstanciateCheeseInGame;
     
-    void InstanciateCheese()
+    void InstantiateCheese()
     {
         InstanciateCheeseInGame += Time.deltaTime;
+        
         var Instantiate = Random.Range(5, 10);
         if (InstanciateCheeseInGame >= Instantiate)
         {
+            // Setea la posicion del ultimo queso
             _cheesePìla.TopCheese().transform.position = 
                 CheeseSpawn.transform.position + Random.insideUnitSphere * MaxDistanceToInstanciateCheese;
 
             _cheesePìla.TopCheese().gameObject.SetActive(true);
-            
+            // Pasa al siguiente queso
             _cheesePìla.UnstackCheese();
             
             InstanciateCheeseInGame = 0;

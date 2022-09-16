@@ -50,7 +50,7 @@
      <Compile Include="Assets\Script\BackgroundScroller.cs" />
      <Compile Include="Assets\Script\Canvas\LevelCanvas.cs" />
      <Compile Include="Assets\Script\Powers\Powers.cs" />
-     <Compile Include="Assets\Script\Menu.cs" />
+     <Compile Include="Assets\Script\Canvas\Menu.cs" />
      <Compile Include="Assets\Script\LevelButton.cs" />
      <Compile Include="Assets\Script\LoadScripts\LoadingScript.cs" />
      <Compile Include="Assets\Script\Pool\Pooling.cs" />
@@ -61,6 +61,7 @@
      <Compile Include="Assets\Script\Pool\GetIDScript.cs" />
      <Compile Include="Assets\Script\PlayerController.cs" />
      <Compile Include="Assets\Script\CheeseTDA\CheesePìla.cs" />
+     <Compile Include="Assets\Script\Powers\PowerQueue.cs" />
      <Reference Include="UnityEngine">
      <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.7f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
      </Reference>
