@@ -89,6 +89,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            Canvas.BarStars.fillAmount = (float)CheeseRecolected / (float)_points.CheeseNeed;
+            
             CanvasGameTime();
         }
 
