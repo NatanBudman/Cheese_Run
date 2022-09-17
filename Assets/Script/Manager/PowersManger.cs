@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PowersManger : MonoBehaviour
 {
@@ -23,20 +24,31 @@ public class PowersManger : MonoBehaviour
     #region Powers_Secction
      [Space]
      [Header("Powers")]
+     
      [Space]
      [SerializeField] private PowerQueue _PowerQueue;
      [Space]
+     
      [SerializeField] private int TotalPowers;
+     [Range(5,25)]
+     [SerializeField] private int InstantiatePowerCooldown;
+     [Range(2,6)]
+     [SerializeField] private int RangeInstantiatePower;
+     private float CurrentInstantiatePower;
+     
      [Space]
      [Header("PowersKeys")]
      [Space]
+     
      [SerializeField] private string TDA_keyPowerParmersano;
      [SerializeField] private string TDA_keyPowerCheedar;
      [SerializeField] private string TDA_keyPowerMuzza;
      [SerializeField] private string TDA_keyPowerGouda;
+     
      [Space]
      [Header("PowersObjects")]
      [Space]
+     
      [SerializeField] private GameObject PowerCheedar;
      [SerializeField] private GameObject PowerParmesano;
      [SerializeField] private GameObject PowerGouda;
@@ -52,7 +64,7 @@ public class PowersManger : MonoBehaviour
         
         _points = FindObjectOfType<Points>();
 
-        #region InicializeQueuePower
+        #region Inicialize_Queue_Power
 
         _PowerQueue.Initialization(TotalPowers);
         
@@ -67,7 +79,11 @@ public class PowersManger : MonoBehaviour
     private void Update()
     {
         if(_PowerQueue.EmptyQueue()) _PowerQueue.ResetQueue();
-        
+
+        if (!_gameManager.isFinishGame)
+        {
+            InstantiatePowers();
+        }
         
     }
 
@@ -115,19 +131,52 @@ public class PowersManger : MonoBehaviour
 
     #region Power_Instanciate_Conditions
 
-    string PowersNeedInstanciatePowersInMap()
+    private void InstantiatePowers()
     {
+        CurrentInstantiatePower += Time.deltaTime;
         
-        if (_gameManager.GameTime <= 25 && _gameManager.CheeseRecolected >= _points.CheeseNeed * 25 / 100 )
+        var RamdomInt = Random.Range(0, 5);
+        
+        if (CurrentInstantiatePower >= InstantiatePowerCooldown)
+        {
+            // Select Orden list Power (QUEUE)
+            if (RamdomInt is 4 or 5)
+            {
+                 _PowerQueue.FirstPower().transform.position = PowerSpawn.transform.position + Random.insideUnitSphere * RangeInstantiatePower;
+                                _PowerQueue.FirstPower().gameObject.SetActive(true);
+                                _PowerQueue.UnstackQueuePower();
+                                Debug.Log("4-5");
+            }
+            // Select Player Power Need 
+            if (RamdomInt is 1 or 2)
+            {
+                string j = PowersNeedInstanciatePowersInMap();
+                 
+                _PowerQueue.PowerNeed(j).transform.position = PowerSpawn.transform.position + Random.insideUnitSphere * RangeInstantiatePower;;
+                _PowerQueue.PowerNeed(j).SetActive(true);
+                Debug.Log("1-2");
+ 
+            }
+ 
+            
+            CurrentInstantiatePower = 0;
+        }
+      
+    }
+
+    private string PowersNeedInstanciatePowersInMap()
+    {
+        // System Power Need 
+        if (_gameManager.GameTime <= 25 && _gameManager.CheeseRecolected >= _points.CheeseNeed * 25 / 100 && _playerController.life > 1 )
         {
             return TDA_keyPowerCheedar;
         }
 
-        if (_gameManager.GameTime > 25 && _gameManager.CheeseRecolected <= _points.CheeseNeed * 25 / 100 )
+        if (_gameManager.GameTime > 25 && _gameManager.CheeseRecolected <= _points.CheeseNeed * 25 / 100 && _playerController.life > 1)
         {
             return TDA_keyPowerGouda;
         }
-        if (_gameManager.GameTime > 45 && _gameManager.CheeseRecolected > _points.CheeseNeed * 25 / 100 )
+        if (_gameManager.GameTime > 45 && _gameManager.CheeseRecolected > _points.CheeseNeed * 25 / 100 && _playerController.life > 1 )
         {
             return TDA_keyPowerParmersano;
         }

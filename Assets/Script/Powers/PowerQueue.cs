@@ -44,7 +44,6 @@ public class PowerQueue : MonoBehaviour,IPowersQueue
                 PowerNeed = Powers[i].gameObject;
             }
         }
-
         return PowerNeed;
     }
 
@@ -53,6 +52,6 @@ public class PowerQueue : MonoBehaviour,IPowersQueue
 
     public GameObject FirstPower() => Powers[index - 1];
 
-    public void ResetQueue() => index = 0;
+    public void ResetQueue() => index = Powers.Length - 1;
 
 }

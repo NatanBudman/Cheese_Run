@@ -14,20 +14,38 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
-    public float GameTime;
-    private float CurrentGammeTime;
-    
+    #region Time
+
+      public float GameTime;
+      private float CurrentGammeTime;
+
+    #endregion
+
+    #region Cheese
+
     public int CheeseRecolected;
 
-    public BackgroundScroller[] BackgroundScrollers;
+    #endregion
 
+    #region GamePlay
+
+    public BackgroundScroller[] BackgroundScrollers;
+        
+    public bool isFinishGame = false;
     private bool isVictory = false;
     private bool isPlayerLive = true;
+
+    #endregion
+
+    
+ 
     void Start()
     {
+        
         PauseGame(false);
 
         CurrentGammeTime = GameTime;
+        Seconds = CurrentGammeTime;
         
         _points = FindObjectOfType<Points>();
         
@@ -40,11 +58,7 @@ public class GameManager : MonoBehaviour
         if (_playerController.gameObject.activeSelf == false) isPlayerLive = false;
         else isPlayerLive = true;
 
-        // Game Time
-        if (isPlayerLive)
-        {
-            CurrentGammeTime += Time.deltaTime;
-        }
+      
         
         // Pausa
         if (Input.GetKey(KeyCode.Escape))
@@ -59,9 +73,25 @@ public class GameManager : MonoBehaviour
             PauseGame(false);
         }
 
-        VictoryConditions();
+        //  Level Status
+        if (!isPlayerLive || CurrentGammeTime < 1 || CheeseRecolected >= _points.CheeseNeed)
+        {
+            isFinishGame = true;
+        }
 
-        LoseConditions();
+       
+
+        if (isFinishGame)
+        {
+            VictoryConditions();
+            
+            LoseConditions();
+        }
+        else
+        {
+            CanvasGameTime();
+        }
+
     }
 
     #region Game
@@ -96,7 +126,7 @@ public class GameManager : MonoBehaviour
             {
                 Canvas.StarsEarned(3);
             }
-    
+
             if (CheeseRecolected >= FirstStar && !isPlayerLive || CheeseRecolected == _points.CheeseNeed)
             {
                 Victory();
@@ -125,8 +155,39 @@ public class GameManager : MonoBehaviour
         private void Lose()
         {
             Canvas.LosePanel.SetActive(true); 
+            _playerController.Death();
+        }
+        
+        float Minute;
+        float Seconds;
+        private void CanvasGameTime()
+        {
+            // Game Time
+            if (!isFinishGame)
+            {
+                CurrentGammeTime -= Time.deltaTime;
+                Seconds -= Time.deltaTime;
+            }
+            
+            if (Seconds > 60 )
+            {
+                Seconds -= 60;
+                Minute += 1; 
+            }
+
+            if (Seconds < 1 && Minute > 0)
+            {
+                Minute -= 1; 
+                Seconds += 60;
+            }
+
+            int Minutos = (int)Minute;
+            int Segundos = (int)Seconds;
+            Canvas.gameTimeText.text = "" + Minutos+ " : " + Segundos;
+
         }
 
+    
     #endregion
    
 

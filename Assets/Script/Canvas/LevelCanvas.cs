@@ -1,17 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class LevelCanvas : MonoBehaviour
 {
     [SerializeField] private GameManager _gameManager;
+    [Space]
+    [Header("Game Status Panels")]
+    [Space]
     public GameObject LosePanel;
     public GameObject VictoryPanel;
-    public GameObject[] Stars;
     public GameObject OptionsPanel;
-
-    private int LevelStars;
+    
+    
+    [Space]
+    [Header("Conditions")]
+    [Space]
+    [SerializeField] private int LevelStars;
+    public GameObject[] Stars;
+    public Text gameTimeText;
+    
+    [Space]
+    [Header("Others")]
+    [Space]
 
     [SerializeField] private string NextLevelSceneName; 
   
@@ -34,12 +47,12 @@ public class LevelCanvas : MonoBehaviour
 
     private void GetStars(int StarsEearned)
     {
+        // "Activate" Stars 
         for (int i = 0; i < StarsEearned; i++)
         {
             Stars[i].SetActive(true);
             if (Stars[i].transform.localScale.x <= 0.7f || Stars[i].transform.localScale.y <= 0.7f)
             {
-                Debug.Log(i);
                    Stars[i].transform.localScale 
                                 = new Vector2((Stars[i].transform.localScale.x + 0.3f * Time.deltaTime),
                                     (Stars[i].transform.localScale.y + 0.3f * Time.deltaTime));

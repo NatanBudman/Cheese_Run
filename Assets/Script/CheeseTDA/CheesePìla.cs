@@ -15,7 +15,6 @@ public class CheesePìla : MonoBehaviour,ICheesePila
     {
         _Cheeses[_index] = Cheese;
         _index++;
-      
     }
 
     public void UnstackCheese() =>  _index--;

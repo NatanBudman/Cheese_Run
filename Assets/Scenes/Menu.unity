@@ -322,7 +322,7 @@ RectTransform:
   m_GameObject: {fileID: 193528492}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 898464897}
@@ -331,7 +331,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 11, y: -53}
+  m_AnchoredPosition: {x: 11, y: 10}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &193528494
@@ -913,8 +913,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.00052071}
-  m_SizeDelta: {x: 800, y: 342.56}
+  m_AnchoredPosition: {x: 0, y: 0.00096893}
+  m_SizeDelta: {x: 800, y: 475.83}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &560841705
 CanvasRenderer:
@@ -1496,7 +1496,7 @@ MonoBehaviour:
   "_cheeseP\xECla": {fileID: 166444151}
   TotalCheeseInGame: 15
   CheesePref: {fileID: 8917681460776304238, guid: 4f39b41c41ac7b341904cf35df5c763a, type: 3}
-  CheeseSpawn: {fileID: 0}
+  CheeseSpawn: {fileID: 1533213726}
   MaxDistanceToInstanciateCheese: 2
 --- !u!1 &898464896
 GameObject:
@@ -1894,6 +1894,11 @@ RectTransform:
   m_AnchoredPosition: {x: -90.985596, y: -48.887436}
   m_SizeDelta: {x: 627.3356, y: 230.91159}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!4 &1533213726 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7129248992435672320, guid: 27c3659786fc82f498ab5fbe5cdc8247, type: 3}
+  m_PrefabInstance: {fileID: 445527129}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1545342345
 GameObject:
   m_ObjectHideFlags: 0
@@ -2021,8 +2026,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -53.1578}
-  m_SizeDelta: {x: 0, y: -106.3154}
+  m_AnchoredPosition: {x: 0, y: -88.69382}
+  m_SizeDelta: {x: 0, y: -177.3875}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1641926397
 MonoBehaviour:

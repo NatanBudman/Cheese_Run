@@ -8,17 +8,24 @@ using Random = UnityEngine.Random;
 
 public class CheeseManager : MonoBehaviour
 {
-    [SerializeField] private static CheeseManager instance;
+    private static CheeseManager instance;
+
+    #region Cheese_Secction
+    [Space]
+    [Header("Cheese in GamePlay")]
+    [Space]
+       [SerializeField] private CheesePìla _cheesePìla;
     
-    [SerializeField] private CheesePìla _cheesePìla;
+        [SerializeField] private int TotalCheeseInGame;
+    
+        [SerializeField] private GameObject CheesePref;
+    
+        [SerializeField] private Transform CheeseSpawn;
+    
+        [SerializeField] private int MaxDistanceToInstanciateCheese;
 
-    [SerializeField] private int TotalCheeseInGame;
-
-    [SerializeField] private GameObject CheesePref;
-
-    [SerializeField] private Transform CheeseSpawn;
-
-    [SerializeField] private int MaxDistanceToInstanciateCheese;
+    #endregion
+ 
 
         private void Awake()
         {
@@ -38,6 +45,8 @@ public class CheeseManager : MonoBehaviour
         // Inicializa la cola con los quesos totales que va a ver en el juego
         _cheesePìla.Initialization(TotalCheeseInGame);
 
+      
+        
         Pooling.PreLoad(CheesePref,TotalCheeseInGame);
 
         StackCheeses();
@@ -57,9 +66,9 @@ public class CheeseManager : MonoBehaviour
 
     void Update()
     {
-        if (GameObject.FindWithTag("Cheese/CheeseSpawn") != null)
+        if (GameObject.FindWithTag("Cheese/CheeseSpawn") != null )
         {
-            // "Instancea" los quesos
+            // Spawn Cheese
             CheeseSpawn.transform.position = GameObject.FindWithTag("Cheese/CheeseSpawn").transform.position;
             // Resetea la cola
             if (_cheesePìla.StackEmpty()) _cheesePìla.ResetPila();

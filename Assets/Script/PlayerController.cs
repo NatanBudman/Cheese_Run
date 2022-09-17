@@ -60,9 +60,11 @@ public class PlayerController : MonoBehaviour
         if (BustSpeedDuration >= 1 && moveSpeed <= MaxSpeed) moveSpeed += 1 * Time.deltaTime;
         else if (BustSpeedDuration <= 0 && moveSpeed >= 5.1f) moveSpeed -= 1 * Time.deltaTime;
 
-        if (life < 1) gameObject.SetActive(false);
-        
+        if (life < 1) Death();
+
     }
+
+    public void Death() => gameObject.SetActive(false);
 
     public int life = 2;
 
