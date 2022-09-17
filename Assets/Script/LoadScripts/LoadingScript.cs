@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class LoadingScript : MonoBehaviour
 {
     public GameObject _ContinueButton;
-    public GameObject _LoadinBar;
+    public Image _LoadinBar;
     private bool Continue = false;
     void Start()
     {
@@ -25,10 +25,11 @@ public class LoadingScript : MonoBehaviour
         operation.allowSceneActivation = false;
         while (!operation.isDone)
         {
+            _LoadinBar.fillAmount = operation.progress / 0.09f;
+            
             if (operation.progress >= 0.9f)
             {
                 _ContinueButton.gameObject.SetActive(true);
-                _LoadinBar.gameObject.SetActive(false);
                 
                 if (Continue)
                 {

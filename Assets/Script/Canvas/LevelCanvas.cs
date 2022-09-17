@@ -20,6 +20,7 @@ public class LevelCanvas : MonoBehaviour
     [Space]
     [SerializeField] private int LevelStars;
     public GameObject[] Stars;
+    public Image BarStars;
     public Text gameTimeText;
     
     [Space]
