@@ -27,6 +27,13 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
+    #region Player_Date
+
+     public static string PlayerName;
+
+    #endregion
+   
+    
     #region GamePlay
 
     public BackgroundScroller[] BackgroundScrollers;
