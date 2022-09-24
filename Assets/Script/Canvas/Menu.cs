@@ -18,17 +18,19 @@ public class Menu : MonoBehaviour
     public Text MessegeInfo;
 
 
-    [Header("Account")] [Space] 
+    [Header("Account")] [Space]
     // panels
+    public static bool isChangeAccount = false;
     public GameObject LoginAccountPanel;
     public GameObject ChoosePanel;
     public GameObject CreateAccountButton;
     public GameObject LoginAccountButton;
     // UI
     public Text AccountStatus;
-    public Text PlayerDataName;
+    
     public InputField PlayerName;
     public InputField PlayerPassWord;
+    
     [SerializeField] private int MaxLetters;
     // boolenas
     private bool isPlayerNameRepeat = true;
@@ -37,8 +39,13 @@ public class Menu : MonoBehaviour
     public LevelData _levelData;
     private PlayerData _playerData;
     public DataManager _DataManager;
-  
+    
+    [Header("Account UI")] 
+    [Space] 
+    public Text PlayerStars;
+    public Text PlayerDataName;
 
+    public int TotalStarsWantCollect;
     private void Start()
     {
         LoginPanel.SetActive(true);
@@ -115,6 +122,23 @@ public class Menu : MonoBehaviour
 
     #region AdministratreAccounts
 
+    public void ReturnButtonSelectedTypeAccount()
+    {
+        ChoosePanel.SetActive(true);
+        LoginAccountPanel.SetActive(false);
+        CreateAccountButton.SetActive(false);
+    }
+
+    public void ReturnLoginAccountButton()
+    {
+        LoginPanel.SetActive(true);
+        ChoosePanel.SetActive(true);
+        TitleGamme.SetActive(false);
+        ButtonPanel.SetActive(false);
+        LoginAccountPanel.SetActive(false);
+        CreateAccountButton.SetActive(false);
+        PlayerDataPanel.SetActive(false);
+    }
     public void LoginSelectedButton()
     {
         LoginAccountPanel.SetActive(true);
@@ -176,13 +200,11 @@ public class Menu : MonoBehaviour
     
         private void CreateNewDatePlayer()
         {
+            isChangeAccount = true;
             // carga los nuevos datos
-            _DataManager.PlayerName = PlayerName.text;
-            _DataManager.PlayerPassword = PlayerPassWord.text;
-            
             _playerData = new PlayerData(_DataManager);
             
-            UpdatePlayerData(_playerData.PlayerName);
+            UpdatePlayerData(_playerData.PlayerName,_playerData.AllCollectionPlayerStars);
             SaveDataManager.SavePlayerData(_DataManager);
             
             // pasa al siguiente escenario
@@ -199,8 +221,10 @@ public class Menu : MonoBehaviour
                 
                 if (playerData.PlayerPassword == PlayerPassWord.text)
                 {
+                    isChangeAccount = true;
+                    
                     //Cargar datos
-                    UpdatePlayerData(playerData.PlayerName);
+                    UpdatePlayerData(playerData.PlayerName,playerData.AllCollectionPlayerStars);
                     
                     // pasa al siguiente escenario
                     LoginPanel.SetActive(false);
@@ -220,9 +244,10 @@ public class Menu : MonoBehaviour
             }
         }
 
-        public void UpdatePlayerData(string PlayerName)
+        public void UpdatePlayerData(string PlayerName, int playerStars)
         {
             PlayerDataName.text = PlayerName;
+            PlayerStars.text ="Stars :" + playerStars +" / " + TotalStarsWantCollect;
         }
     #endregion
     
