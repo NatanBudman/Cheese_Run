@@ -58,13 +58,14 @@ public class PlayerData
 {
     public string PlayerName;
     public string PlayerPassword;
+    public int AllCollectionPlayerStars;
     
     
     public PlayerData(DataManager playerData)
     {
         PlayerName = playerData.PlayerName;
         PlayerPassword = playerData.PlayerPassword;
-        
+        AllCollectionPlayerStars = playerData.AllPlayerStars;
     }
    
 }
