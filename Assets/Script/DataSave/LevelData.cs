@@ -23,7 +23,6 @@ public class LevelData : MonoBehaviour
             for (int i = 0; i < levels.Length; i++)
             {
                 levelStars[i] = levels[i].LevelStars;
-                Debug.Log(i);
                 if (i == levels.Length - 1)
                 {
                     Menu.isChangeAccount = false;
