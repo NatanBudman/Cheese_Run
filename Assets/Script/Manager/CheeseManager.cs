@@ -44,8 +44,6 @@ public class CheeseManager : MonoBehaviour
     {
         // Inicializa la cola con los quesos totales que va a ver en el juego
         _cheesePìla.Initialization(TotalCheeseInGame);
-
-      
         
         Pooling.PreLoad(CheesePref,TotalCheeseInGame);
 

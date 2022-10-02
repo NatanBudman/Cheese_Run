@@ -48,7 +48,7 @@ public class Menu : MonoBehaviour
         private bool isPlayerPasswordRepeat = true;
         // scrips
         public LevelData _levelData;
-        private PlayerData _playerData;
+        public PlayerData _playerData;
         public DataManager _DataManager;
         
         [Header("User Data")] 
@@ -59,9 +59,14 @@ public class Menu : MonoBehaviour
         public int TotalStarsWantCollect;
 
     #endregion
-    
+
+  
     private void Start()
     {
+        SaveDataManager.GetNames();
+        
+        Debug.Log(SaveDataManager.PlayerNames.Count);
+        Debug.Log(SaveDataManager.PlayersRegister);
         #region Panels
 
             LoginPanel.SetActive(true);
@@ -81,6 +86,7 @@ public class Menu : MonoBehaviour
 
             #endregion
    
+         
     }
 
     private void Update()
@@ -222,8 +228,6 @@ public class Menu : MonoBehaviour
                 LoginAccountPanel.SetActive(true);
                 LoginAccountButton.SetActive(true);
                 ChoosePanel.SetActive(false);
-        
-                
             }
         
             public void PasswordVisualizationButton()
@@ -234,6 +238,7 @@ public class Menu : MonoBehaviour
             {
                 LoginAccountPanel.SetActive(true);
                 CreateAccountButton.SetActive(true);
+                LoginAccountButton.SetActive(false);
                 ChoosePanel.SetActive(false);
             }
             public void CreateNewPlayerButton()
@@ -245,9 +250,11 @@ public class Menu : MonoBehaviour
 
                     if (SaveDataManager.VerificatedPlayerName(PlayerName.text) != null)
                     {
+
                         isPlayerNameRepeat = false;
                         SaveDataManager.AddPlayersNamesToListNameUsed(PlayerName.text);
-    
+                        Debug.Log(PlayerName.text);
+                        
                     }
                     else
                     {
@@ -271,6 +278,7 @@ public class Menu : MonoBehaviour
     
                 if (isPlayerNameRepeat == false && isPlayerPasswordRepeat == false)
                 {
+
                     CreateNewDatePlayer();
                 }
     
@@ -291,11 +299,16 @@ public class Menu : MonoBehaviour
                 #region Load_DATA
     
                  // carga los nuevos datos
+                            
                             _playerData = new PlayerData(_DataManager);
                             SavePlayerName = PlayerName.text;
                             SavePlayerPassword = PlayerPassWord.text;
-                            UpdatePlayerData(_playerData.PlayerName,_playerData.AllCollectionPlayerStars);
+                            UpdatePlayerData(PlayerName.text,_playerData.AllCollectionPlayerStars);
+                            UploadData(PlayerName.text, PlayerPassWord.text, 0);
+                            Debug.Log(PlayerName.text);
+                            Debug.Log(SavePlayerName);
                             SaveDataManager.SavePlayerData(_DataManager);
+                            SaveDataManager.SetNames();
     
                     #endregion
     
@@ -324,6 +337,8 @@ public class Menu : MonoBehaviour
                         UpdatePlayerData(playerData.PlayerName,playerData.AllCollectionPlayerStars);
                         UploadData(playerData.PlayerName, playerData.PlayerPassword, playerData.AllCollectionPlayerStars);
                         
+                        // Load name
+                        SaveDataManager.SetNames();
                         // pasa al siguiente escenario
                         LoginPanel.SetActive(false);
                         TitleGamme.SetActive(true);
@@ -348,6 +363,9 @@ public class Menu : MonoBehaviour
 
                 private void UpdatePlayerData(string PlayerName, int playerStars)
                 {
+                    Debug.Log(PlayerDataName.text);
+                    Debug.Log("nombre cargado");
+
                     PlayerDataName.text = PlayerName;
                     PlayerStars.text ="Stars :" + playerStars +" / " + TotalStarsWantCollect;
                     SavePlayerName = PlayerName;

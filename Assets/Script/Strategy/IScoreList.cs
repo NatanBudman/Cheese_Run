@@ -6,13 +6,13 @@ public interface IScoreList
 {
     public void Initialization(int AmountPila);
 
-    public void StackCheese(PlayerData playerData,int Stars);
+    public void StackPlayers(PlayerData playerData);
 
-    public void UnstackCheese();
+    public void UnstackPlayer();
 
-    public string TopCheese();
+    public PlayerData TopPlayer();
 
     public bool StackEmpty();
 
-    public void ResetPila();
+    public void ResetList();
 }
