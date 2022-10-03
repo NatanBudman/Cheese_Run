@@ -92,20 +92,27 @@ public class PlayerController : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Powers/Cheddar"))
         {
-            gm.CurrentGammeTime += 30;
+            gm.CurrentGameTime += 30;
+            other.gameObject.SetActive(false);
         }
         if (other.gameObject.CompareTag("Powers/Gouda"))
         {
             hasgoudaDouble = true;
             StartCoroutine(Gouda());
+            other.gameObject.SetActive(false);
+
         }
         if (other.gameObject.CompareTag("Powers/Muzza"))
         {
             StartCoroutine(Muzza());
+            other.gameObject.SetActive(false);
+
         }
         if (other.gameObject.CompareTag("Powers/Parmesano"))
         {
             moveSpeed = 10;
+            other.gameObject.SetActive(false);
+
         }
 
     }

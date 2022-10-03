@@ -927,12 +927,36 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 8947936747862837268, guid: d0efd212e68ee004380e5622b605c36b, type: 3}
+      propertyPath: gm
+      value: 
+      objectReference: {fileID: 1179091847}
+    - target: {fileID: 8947936747862837268, guid: d0efd212e68ee004380e5622b605c36b, type: 3}
       propertyPath: Powers
       value: 
       objectReference: {fileID: 734575771}
+    - target: {fileID: 8947936747862837270, guid: d0efd212e68ee004380e5622b605c36b, type: 3}
+      propertyPath: m_Size.x
+      value: 1.8110154
+      objectReference: {fileID: 0}
+    - target: {fileID: 8947936747862837270, guid: d0efd212e68ee004380e5622b605c36b, type: 3}
+      propertyPath: m_Size.y
+      value: 4.456644
+      objectReference: {fileID: 0}
+    - target: {fileID: 8947936747862837270, guid: d0efd212e68ee004380e5622b605c36b, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.06505641
+      objectReference: {fileID: 0}
+    - target: {fileID: 8947936747862837270, guid: d0efd212e68ee004380e5622b605c36b, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.13011265
+      objectReference: {fileID: 0}
     - target: {fileID: 8947936747862837353, guid: d0efd212e68ee004380e5622b605c36b, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8947936747862837354, guid: d0efd212e68ee004380e5622b605c36b, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8947936747862837355, guid: d0efd212e68ee004380e5622b605c36b, type: 3}
       propertyPath: m_RootOrder

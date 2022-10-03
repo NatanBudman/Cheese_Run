@@ -9,14 +9,18 @@ public class Cheese : MonoBehaviour
 
     [SerializeField] private Camera PlayerCamera;
     [SerializeField] private float _cameraWidth;
+
+    [SerializeField] private bool IsCheeseCollecteble;
     // Start is called before the first frame update
     void Start()
     {
         PlayerCamera = FindObjectOfType<Camera>();
         
         _cameraWidth = PlayerCamera.transform.position.x - 12;
-        
-        DontDestroyOnLoad(gameObject);
+        if (IsCheeseCollecteble)
+        {
+            DontDestroyOnLoad(gameObject);
+        }
     }
 
     // Update is called once per frame
