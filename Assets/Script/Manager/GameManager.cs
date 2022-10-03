@@ -185,7 +185,7 @@ public class GameManager : MonoBehaviour
             if (TimeProvisional != CurrentGameTime)
             {
                 var timeCurrent =  CurrentGameTime;
-                var timeSeconds = Seconds;
+                var timeSeconds = Seconds + (Minute * 60);
                 var time = timeCurrent - timeSeconds;
                 Seconds += time;
                 TimeProvisional = CurrentGameTime;

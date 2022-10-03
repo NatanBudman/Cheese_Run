@@ -578,6 +578,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8975120292872401795, guid: d0718de86efbff7448cc87885c481661, type: 3}
+      propertyPath: CheeseNeed
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 8975120294035502400, guid: d0718de86efbff7448cc87885c481661, type: 3}
       propertyPath: m_Name
       value: Managers
