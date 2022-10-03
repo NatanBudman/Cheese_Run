@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Menu : MonoBehaviour
 {
     [Header("Panels")]
+    [Space]
     public GameObject LoginPanel;
     public GameObject PlayerDataPanel;
     public GameObject ButtonPanel;
@@ -14,58 +15,83 @@ public class Menu : MonoBehaviour
     public GameObject OptionPanel;
     public GameObject messege;
     public GameObject TitleGamme;
+    public GameObject ScorePanel;
 
     public Text MessegeInfo;
 
+    #region Account
 
-    [Header("Account")] [Space]
-    // panels
-    public static bool isChangeAccount = false;
-    public GameObject LoginAccountPanel;
-    public GameObject ChoosePanel;
-    public GameObject CreateAccountButton;
-    public GameObject LoginAccountButton;
-    // UI
-    public Text AccountStatus;
+   
+        // Conditions
+        public static bool isChangeAccount = false;
+        public static bool isConnectAccount = false;
     
-    public InputField PlayerName;
-    public InputField PlayerPassWord;
+        public static string SavePlayerName;
+        public static string SavePlayerPassword;
+        
+        [Header("Account UI ")] 
+        [Space]
+        // panels
+        public GameObject LoginAccountPanel;
+        public GameObject ChoosePanel;
+        public GameObject CreateAccountButton;
+        public GameObject LoginAccountButton;
+        // UI
+        public Text AccountStatus;
+        
+        public InputField PlayerName;
+        public InputField PlayerPassWord;
+        
+        [SerializeField] private int MaxLetters;
+        // boolenas
+        private bool isPlayerNameRepeat = true;
+        private bool isPlayerPasswordRepeat = true;
+        // scrips
+        public LevelData _levelData;
+        public PlayerData _playerData;
+        public DataManager _DataManager;
+        
+        [Header("User Data")] 
+        [Space] 
+        public Text PlayerStars;
+        public Text PlayerDataName;
     
-    [SerializeField] private int MaxLetters;
-    // boolenas
-    private bool isPlayerNameRepeat = true;
-    private bool isPlayerPasswordRepeat = true;
-    // scrips
-    public LevelData _levelData;
-    private PlayerData _playerData;
-    public DataManager _DataManager;
-    
-    [Header("Account UI")] 
-    [Space] 
-    public Text PlayerStars;
-    public Text PlayerDataName;
+        public int TotalStarsWantCollect;
 
-    public int TotalStarsWantCollect;
+    #endregion
+
+  
     private void Start()
     {
-        LoginPanel.SetActive(true);
-        ChoosePanel.SetActive(true);
-        levelPanel.SetActive(false);
-        ButtonPanel.SetActive(false);
-        OptionPanel.SetActive(false);
+        SaveDataManager.GetNames();
+        
+        Debug.Log(SaveDataManager.PlayerNames.Count);
+        Debug.Log(SaveDataManager.PlayersRegister);
+        #region Panels
 
+            LoginPanel.SetActive(true);
+                ChoosePanel.SetActive(true);
+                levelPanel.SetActive(false);
+                ButtonPanel.SetActive(false);
+                OptionPanel.SetActive(false);
+                ScorePanel.SetActive(false);
+
+        #endregion
+    
+        #region LoadData
+
+             _playerData = SaveDataManager.LoadPlayerData(SavePlayerName);
+                UploadData(_playerData.PlayerName, _playerData.PlayerPassword, _playerData.AllCollectionPlayerStars);
+                UpdatePlayerData(_playerData.PlayerName, _playerData.AllCollectionPlayerStars);
+
+            #endregion
+   
+         
     }
 
     private void Update()
     {
-        if (LoginPanel.activeSelf == true)
-        {
-            PlayerDataPanel.SetActive(false);
-        }
-        else if (LoginPanel.activeSelf == false && PlayerDataPanel.activeSelf == false)
-        {
-            PlayerDataPanel.SetActive(true);
-        }
+       
         
         /// Messege Info \\\
         if (ButtonPanel.activeSelf == true)
@@ -78,82 +104,144 @@ public class Menu : MonoBehaviour
         if (levelPanel.activeSelf == true) MessegeInfo.text = "A la hora de elegir niveles siempre tomamos encuenta el orden numérico";
         if (OptionPanel.activeSelf == true) MessegeInfo.text = "Ajustar es mas para el sonido y los gráficos";
 
-      
+
+        #region Connected_Account
+        //  Activate Player Data Account
+            if (LoginPanel.activeSelf == true)
+            {
+                PlayerDataPanel.SetActive(false);
+            }
+            else if (LoginPanel.activeSelf == false && PlayerDataPanel.activeSelf == false)
+            {
+                PlayerDataPanel.SetActive(true);
+            }
+            // verification Status Account
+            if (_DataManager.PlayerName != String.Empty && _DataManager.PlayerPassword != String.Empty)
+            {
+                isConnectAccount = true;
+            }
+            else
+            {
+                isConnectAccount = false;
+            }
+            
+            if (isConnectAccount == false && LoginPanel.activeSelf == false ) ReturnLoginAccountButton();
+            
+            if (isConnectAccount == true && LoginPanel.activeSelf == true)
+            {
+                LoginPanel.SetActive(false);
+                TitleGamme.SetActive(true);
+                ButtonPanel.SetActive(true);
+            }
+           
+
+        #endregion
+    
         
     }
 
-    /// Panels Activation \\\
-    public void StarButton()
-    {
-        levelPanel.SetActive(true);
-        ButtonPanel.SetActive(false);
-    }
+    #region Buttons_Menu
 
-    public void OptionButton()
-    {
-        ButtonPanel.SetActive(false);
-        OptionPanel.SetActive(true);
-        
-    }
-
-    public void InfoButton()
-    {
-        if (messege.activeSelf)
+     /// Panels Activation \\\
+        public void StarButton()
         {
-            messege.SetActive(false);
+            levelPanel.SetActive(true);
+            ButtonPanel.SetActive(false);
         }
-        else
+    
+        public void OptionButton()
         {
-            messege.SetActive(true);
+            ButtonPanel.SetActive(false);
+            OptionPanel.SetActive(true);
+            
         }
-    }
+    
+        public void InfoButton()
+        {
+            if (messege.activeSelf)
+            {
+                messege.SetActive(false);
+            }
+            else
+            {
+                messege.SetActive(true);
+            }
+        }
+    
+        public void ExitButton()
+        {
+            Application.Quit();
+        }
+    
+        public void returnButton()
+        {
+            ButtonPanel.SetActive(true);
+            levelPanel.SetActive(false);
+            OptionPanel.SetActive(false);
+            ScorePanel.SetActive(false);
 
-    public void ExitButton()
-    {
-        Application.Quit();
-    }
+        }
 
-    public void returnButton()
-    {
-        ButtonPanel.SetActive(true);
-        levelPanel.SetActive(false);
-        OptionPanel.SetActive(false);
-    }
+        public void ScoreButton()
+        {
+            ScorePanel.SetActive(true);
+            ButtonPanel.SetActive(false);
+        }
+
+        #endregion
+   
 
     #region AdministratreAccounts
 
-    public void ReturnButtonSelectedTypeAccount()
-    {
-        ChoosePanel.SetActive(true);
-        LoginAccountPanel.SetActive(false);
-        CreateAccountButton.SetActive(false);
-    }
+    #region Buttons_Account
 
-    public void ReturnLoginAccountButton()
-    {
-        LoginPanel.SetActive(true);
-        ChoosePanel.SetActive(true);
-        TitleGamme.SetActive(false);
-        ButtonPanel.SetActive(false);
-        LoginAccountPanel.SetActive(false);
-        CreateAccountButton.SetActive(false);
-        PlayerDataPanel.SetActive(false);
-    }
-    public void LoginSelectedButton()
-    {
-        LoginAccountPanel.SetActive(true);
-        LoginAccountButton.SetActive(true);
-        ChoosePanel.SetActive(false);
+     public void ReturnCreateOrLogedAccount()
+        {
+            ChoosePanel.SetActive(true);
+            LoginAccountPanel.SetActive(false);
+            CreateAccountButton.SetActive(false);
+        }
+    
+        public void ReturnLoginAccountButton()
+        {
+            ResetData();
+            isConnectAccount = false;
+            _playerData = null;
+            LoginPanel.SetActive(true);
+            ChoosePanel.SetActive(true);
+            TitleGamme.SetActive(false);
+            ButtonPanel.SetActive(false);
+            LoginAccountPanel.SetActive(false);
+            CreateAccountButton.SetActive(false);
+            PlayerDataPanel.SetActive(false);
+            
+        }
 
+        private void ResetData()
+        {
+            _DataManager.PlayerName = String.Empty;
+            _DataManager.PlayerPassword = String.Empty;
+            _DataManager.AllPlayerStars = 0;
+        }
+          public void LoginSelectedButton()
+            {
+                LoginAccountPanel.SetActive(true);
+                LoginAccountButton.SetActive(true);
+                ChoosePanel.SetActive(false);
+            }
         
-    }
-    public void CreateAccountSelectedButton()
-    {
-        LoginAccountPanel.SetActive(true);
-        CreateAccountButton.SetActive(true);
-        ChoosePanel.SetActive(false);
-    }
-    public void CreateNewPlayerButton()
+            public void PasswordVisualizationButton()
+            {
+                PlayerPassWord.contentType = PlayerPassWord.contentType == InputField.ContentType.Name ? InputField.ContentType.Password : InputField.ContentType.Name;
+            }
+            public void CreateAccountSelectedButton()
+            {
+                LoginAccountPanel.SetActive(true);
+                CreateAccountButton.SetActive(true);
+                LoginAccountButton.SetActive(false);
+                ChoosePanel.SetActive(false);
+            }
+            public void CreateNewPlayerButton()
         {
             if (PlayerName.text != String.Empty && PlayerPassWord.text != String.Empty)
             {
@@ -162,9 +250,11 @@ public class Menu : MonoBehaviour
 
                     if (SaveDataManager.VerificatedPlayerName(PlayerName.text) != null)
                     {
+
                         isPlayerNameRepeat = false;
                         SaveDataManager.AddPlayersNamesToListNameUsed(PlayerName.text);
-    
+                        Debug.Log(PlayerName.text);
+                        
                     }
                     else
                     {
@@ -188,6 +278,7 @@ public class Menu : MonoBehaviour
     
                 if (isPlayerNameRepeat == false && isPlayerPasswordRepeat == false)
                 {
+
                     CreateNewDatePlayer();
                 }
     
@@ -197,58 +288,98 @@ public class Menu : MonoBehaviour
                 AccountStatus.text = "Enter values";
             }
         }
-    
+    #endregion
+
+    #region Load_Data_And_Create_Data
+
         private void CreateNewDatePlayer()
-        {
-            isChangeAccount = true;
-            // carga los nuevos datos
-            _playerData = new PlayerData(_DataManager);
-            
-            UpdatePlayerData(_playerData.PlayerName,_playerData.AllCollectionPlayerStars);
-            SaveDataManager.SavePlayerData(_DataManager);
-            
-            // pasa al siguiente escenario
-            LoginPanel.SetActive(false);
-            TitleGamme.SetActive(true);
-            ButtonPanel.SetActive(true);
-        }
-
-        public void LoginButton()
-        {
-            if (SaveDataManager.LoadPlayerData(PlayerName.text) != null)
             {
-                PlayerData playerData = SaveDataManager.LoadPlayerData(PlayerName.text);
-                
-                if (playerData.PlayerPassword == PlayerPassWord.text)
+                isChangeAccount = true;
+    
+                #region Load_DATA
+    
+                 // carga los nuevos datos
+                            
+                            _playerData = new PlayerData(_DataManager);
+                            SavePlayerName = PlayerName.text;
+                            SavePlayerPassword = PlayerPassWord.text;
+                            UpdatePlayerData(PlayerName.text,_playerData.AllCollectionPlayerStars);
+                            UploadData(PlayerName.text, PlayerPassWord.text, 0);
+                            Debug.Log(PlayerName.text);
+                            Debug.Log(SavePlayerName);
+                            SaveDataManager.SavePlayerData(_DataManager);
+                            SaveDataManager.SetNames();
+    
+                    #endregion
+    
+                #region Pass_Menu
+    
+                       // pasa al siguiente escenario
+                                LoginPanel.SetActive(false);
+                                TitleGamme.SetActive(true);
+                                ButtonPanel.SetActive(true);
+    
+                    #endregion
+             
+            }
+    
+        public void LoginButton()
+            {
+                if (SaveDataManager.LoadPlayerData(PlayerName.text) != null)
                 {
-                    isChangeAccount = true;
+                    PlayerData playerData = SaveDataManager.LoadPlayerData(PlayerName.text);
                     
-                    //Cargar datos
-                    UpdatePlayerData(playerData.PlayerName,playerData.AllCollectionPlayerStars);
-                    
-                    // pasa al siguiente escenario
-                    LoginPanel.SetActive(false);
-                    TitleGamme.SetActive(true);
-                    ButtonPanel.SetActive(true);
-
+                    if (playerData.PlayerPassword == PlayerPassWord.text)
+                    {
+                        isChangeAccount = true;
+                        SavePlayerPassword = playerData.PlayerPassword;
+                        //Cargar datos
+                        UpdatePlayerData(playerData.PlayerName,playerData.AllCollectionPlayerStars);
+                        UploadData(playerData.PlayerName, playerData.PlayerPassword, playerData.AllCollectionPlayerStars);
+                        
+                        // Load name
+                        SaveDataManager.SetNames();
+                        // pasa al siguiente escenario
+                        LoginPanel.SetActive(false);
+                        TitleGamme.SetActive(true);
+                        ButtonPanel.SetActive(true);
+    
+                    }
+                    else
+                    {
+                        playerData = null;
+                        AccountStatus.text = "Incorrect password";
+                    }
                 }
                 else
                 {
-                    playerData = null;
-                    AccountStatus.text = "Incorrect password";
+                    AccountStatus.text = "User does not exist";
                 }
             }
-            else
-            {
-                AccountStatus.text = "User does not exist";
-            }
-        }
 
-        public void UpdatePlayerData(string PlayerName, int playerStars)
-        {
-            PlayerDataName.text = PlayerName;
-            PlayerStars.text ="Stars :" + playerStars +" / " + TotalStarsWantCollect;
-        }
+    #endregion
+    
+    #region UpdateData
+
+                private void UpdatePlayerData(string PlayerName, int playerStars)
+                {
+                    Debug.Log(PlayerDataName.text);
+                    Debug.Log("nombre cargado");
+
+                    PlayerDataName.text = PlayerName;
+                    PlayerStars.text ="Stars :" + playerStars +" / " + TotalStarsWantCollect;
+                    SavePlayerName = PlayerName;
+                }
+        
+                private void UploadData(string playername, string playerPassword, int stars)
+                {
+                    _DataManager.PlayerName = playername;
+                    _DataManager.PlayerPassword = playerPassword;
+                    _DataManager.AllPlayerStars = stars;
+                }
+
+        #endregion
+      
     #endregion
     
 }

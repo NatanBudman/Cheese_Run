@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public static class SaveDataManager
 {
+    public static List<string> PlayerNames  = new List<string>();
+    public static int PlayersRegister ;
     public static void SavePlayerData(DataManager playerDatas)
     {
         PlayerData playerData = new PlayerData(playerDatas);
@@ -38,19 +40,50 @@ public static class SaveDataManager
 
     public static void AddPlayersNamesToListNameUsed( string NameUsing)
     {
-        PlayerPrefs.SetString($"{NameUsing}", NameUsing);
+        PlayerNames.Add(NameUsing);
+        PlayersRegister++;
+        Debug.Log(NameUsing);
     }
 
+    public static void SetNames()
+    {
+        PlayerPrefs.SetInt("PlayersRegister", PlayersRegister);
+        Debug.Log(PlayersRegister);
+
+        for (int i = 0; i < PlayersRegister - 1 ; i++)
+        {
+            Debug.Log(i);
+            PlayerPrefs.SetString($"PlayerNames{i}",PlayerNames[i]);
+        }
+    }
+
+    public static string GetName(int NameInList)
+    {
+        return PlayerPrefs.GetString($"PlayerNames{NameInList}");
+    }
+
+    public static void GetNames()
+    {
+        PlayersRegister = PlayerPrefs.GetInt("PlayersRegister");
+        Debug.Log(PlayersRegister);
+
+        for (int i = 0; i < PlayersRegister - 1; i++)
+        {
+            Debug.Log(i);
+            PlayerNames.Add(PlayerPrefs.GetString($"PlayerNames{i}"));
+        }
+    }
     public static string VerificatedPlayerName(string nameVerificate)
     {
-        if (PlayerPrefs.HasKey(nameVerificate))
+        for (int i = 0; i < PlayersRegister ; i++)
         {
-            return null;
+            if (nameVerificate == GetName(i))
+            {
+                return null;
+            }
+           
         }
-        else
-        {
-            return nameVerificate;
-        }
+        return nameVerificate;
     }
 }
 [System.Serializable]
