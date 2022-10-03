@@ -5,7 +5,7 @@ using System.Diagnostics;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
-public class LevelData : MonoBehaviour
+public class LevelsDataManager : MonoBehaviour
 {
     public LevelInfo[] levels;
     public int[] levelStars;
@@ -18,11 +18,12 @@ public class LevelData : MonoBehaviour
 
     private void Update()
     {
+        /*
         if (Menu.isChangeAccount)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                levelStars[i] = levels[i].LevelStars;
+                levelStars[i] = levels[i].Starshave;
                 if (i == levels.Length - 1)
                 {
                     Menu.isChangeAccount = false;
@@ -31,5 +32,8 @@ public class LevelData : MonoBehaviour
             }
         
         }
+        */
     }
+    
+        
 }

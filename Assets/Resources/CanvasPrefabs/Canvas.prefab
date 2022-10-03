@@ -1442,11 +1442,14 @@ MonoBehaviour:
   _gameManager: {fileID: 0}
   LosePanel: {fileID: 4357157245072674793}
   VictoryPanel: {fileID: 4357157243681500677}
+  OptionsPanel: {fileID: 5003966045804632184}
+  LevelStars: 0
   Stars:
   - {fileID: 4357157244283718567}
   - {fileID: 4357157244504967070}
   - {fileID: 4357157245014659650}
-  OptionsPanel: {fileID: 5003966045804632184}
+  BarStars: {fileID: 0}
+  gameTimeText: {fileID: 0}
   NextLevelSceneName: 
 --- !u!1 &4357157244504967070
 GameObject:

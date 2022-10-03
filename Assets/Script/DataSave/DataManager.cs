@@ -5,19 +5,22 @@ using UnityEngine;
 
 public class DataManager : MonoBehaviour
 {
+   // public LevelsDataManager _LevelDataManager;
+    
     public List<string> AllUserRegister = new List<string>();
-    private int UsarUpdate ;
+    private int UserUpdate ;
     public string PlayerName;
     public string PlayerPassword;
     public int AllPlayerStars;
 
     public int PreviusAllPlayerStars;
     
+    
     private void Start()
     {
         DontDestroyOnLoad(this);
         
-        UsarUpdate = SaveDataManager.PlayersRegister;
+        UserUpdate = SaveDataManager.PlayersRegister;
         
         for (int i = 0; i < SaveDataManager.PlayersRegister - 1; i++)
         {
@@ -28,18 +31,26 @@ public class DataManager : MonoBehaviour
 
     private void Update()
     {
-        if (UsarUpdate != SaveDataManager.PlayersRegister)
+        if (UserUpdate != SaveDataManager.PlayersRegister)
         {
-            for (int i = UsarUpdate; i < SaveDataManager.PlayersRegister - 1; i++)
+            for (int i = UserUpdate; i < SaveDataManager.PlayersRegister - 1; i++)
             {
                 AllUserRegister.Add(SaveDataManager.PlayerNames[i]);
-                UsarUpdate++;
+                UserUpdate++;
             }
         }
 
         if (AllPlayerStars != PreviusAllPlayerStars && PlayerName != String.Empty)
         {
-            SaveDataManager.SavePlayerData(this);
+            UpdateDate();
         }
     }
+
+    void UpdateDate()
+    {
+        SaveDataManager.SavePlayerData(this);
+
+    }
+    
+    public bool IsHaveAccountRegister() =>  PlayerName != String.Empty;
 }

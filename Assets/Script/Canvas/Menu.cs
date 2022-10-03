@@ -47,7 +47,7 @@ public class Menu : MonoBehaviour
         private bool isPlayerNameRepeat = true;
         private bool isPlayerPasswordRepeat = true;
         // scrips
-        public LevelData _levelData;
+        public LevelsDataManager levelsDataManager;
         public PlayerData _playerData;
         public DataManager _DataManager;
         
@@ -112,7 +112,9 @@ public class Menu : MonoBehaviour
 
 
         #region Connected_Account
+        
         //  Activate Player Data Account
+        
             if (LoginPanel.activeSelf == true)
             {
                 PlayerDataPanel.SetActive(false);
@@ -121,7 +123,9 @@ public class Menu : MonoBehaviour
             {
                 PlayerDataPanel.SetActive(true);
             }
+            
             // verification Status Account
+            
             if (_DataManager.PlayerName != String.Empty && _DataManager.PlayerPassword != String.Empty)
             {
                 isConnectAccount = true;

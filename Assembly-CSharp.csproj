@@ -43,7 +43,7 @@
   <ItemGroup>
      <Compile Include="Assets\Script\Powers\PowerQueue.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
-     <Compile Include="Assets\Script\DataSave\LevelData.cs" />
+     <Compile Include="Assets\Script\DataSave\LevelsDataManager.cs" />
      <Compile Include="Assets\Script\Pool\ObjectDataScript.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
      <Compile Include="Assets\Script\Strategy\IScoreList.cs" />
