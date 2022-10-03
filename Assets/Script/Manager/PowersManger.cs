@@ -140,7 +140,7 @@ public class PowersManger : MonoBehaviour
         if (CurrentInstantiatePower >= InstantiatePowerCooldown)
         {
             // Select Orden list Power (QUEUE)
-            if (RamdomInt is 4 or 5)
+            if (RamdomInt == 4 ||RamdomInt == 5)
             {
                  _PowerQueue.FirstPower().transform.position = PowerSpawn.transform.position + Random.insideUnitSphere * RangeInstantiatePower;
                                 _PowerQueue.FirstPower().gameObject.SetActive(true);
@@ -148,7 +148,7 @@ public class PowersManger : MonoBehaviour
                                 Debug.Log("4-5");
             }
             // Select Player Power Need 
-            if (RamdomInt is 1 or 2)
+            if (RamdomInt == 1 || RamdomInt == 2)
             {
                 string j = PowersNeedInstanciatePowersInMap();
                  

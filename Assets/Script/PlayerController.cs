@@ -5,11 +5,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    #region Coponents
+    #region Components
 
         [SerializeField] private Points _points;
         public PowersManger Powers;
         public Rigidbody2D rb;
+    public GameManager gm;
     #endregion
 
     #region Movement
@@ -29,8 +30,8 @@ public class PlayerController : MonoBehaviour
 
 
     public SpriteRenderer sprite;
-    
 
+    public bool hasgoudaDouble;
     
     // Start is called before the first frame update
     void Start()
@@ -78,12 +79,50 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.CompareTag("Cheese/Cheese"))
         {
-            _points.GetCheesePoint(1);
-            other.gameObject.SetActive(false);
+            if(hasgoudaDouble== true)
+            {
+                _points.GetCheesePoint(2);
+                other.gameObject.SetActive(false);
+            }
+            else
+            {
+                _points.GetCheesePoint(1);
+                other.gameObject.SetActive(false);
+            }
         }
-       
+        if (other.gameObject.CompareTag("Powers/Cheddar"))
+        {
+            gm.CurrentGammeTime += 30;
+        }
+        if (other.gameObject.CompareTag("Powers/Gouda"))
+        {
+            hasgoudaDouble = true;
+            StartCoroutine(Gouda());
+        }
+        if (other.gameObject.CompareTag("Powers/Muzza"))
+        {
+            StartCoroutine(Muzza());
+        }
+        if (other.gameObject.CompareTag("Powers/Parmesano"))
+        {
+            moveSpeed = 10;
+        }
+
     }
 
+    public IEnumerator Muzza()
+    {
+        Physics2D.IgnoreLayerCollision(3, 6, true);
+        yield return new WaitForSeconds(10f);
+        sprite.color = Color.blue;
+        Physics2D.IgnoreLayerCollision(3, 6, false);
+    }
+
+    public IEnumerator Gouda()
+    {
+        yield return new WaitForSeconds(5f);
+        hasgoudaDouble = false;
+    }
 
     public IEnumerator FlashRed()
     {

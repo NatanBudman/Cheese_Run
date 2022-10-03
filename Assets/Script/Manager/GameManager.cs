@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     #region Time
 
       public float GameTime;
-      private float CurrentGammeTime;
+      public float CurrentGammeTime;
 
     #endregion
 
@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+
         // Verfica si esta vivo el player
         if (_playerController.gameObject.activeSelf == false) isPlayerLive = false;
         else isPlayerLive = true;
