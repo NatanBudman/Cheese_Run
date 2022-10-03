@@ -63,6 +63,12 @@ public class Menu : MonoBehaviour
   
     private void Start()
     {
+      
+        for (int i = 0; i < SaveDataManager.PlayersRegister - 1; i++)
+        { 
+            SaveDataManager.LoadPlayerData(_DataManager.AllUserRegister[i]);
+           SaveDataManager.SavePlayerData(_DataManager);
+        }
         SaveDataManager.GetNames();
         
         Debug.Log(SaveDataManager.PlayerNames.Count);
