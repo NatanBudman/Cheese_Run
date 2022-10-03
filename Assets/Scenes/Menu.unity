@@ -837,7 +837,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 197546271}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 64.42727, y: -2.7888527, z: 0}
+  m_LocalPosition: {x: 64.42727, y: -19, z: 0}
   m_LocalScale: {x: 0.41666654, y: 0.41666654, z: 0.41666654}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1547,7 +1547,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 318736200}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 995.10913, y: 218.29837, z: 0}
+  m_LocalPosition: {x: 995.10913, y: 199.75688, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1604,7 +1604,7 @@ MonoBehaviour:
   PlayerName: {fileID: 105873989}
   PlayerPassWord: {fileID: 1388470558}
   MaxLetters: 20
-  _levelData: {fileID: 550400823}
+  levelsDataManager: {fileID: 0}
   _playerData:
     PlayerName: 
     PlayerPassword: 
@@ -1779,7 +1779,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 323798542}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -390, y: -167, z: 0}
+  m_LocalPosition: {x: -390, y: -183.21114, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1826,7 +1826,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 43}
+  m_AnchoredPosition: {x: 0, y: 26.788862}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &445527129
@@ -2419,7 +2419,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 550400821}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 995.10913, y: 218.29837, z: 0}
+  m_LocalPosition: {x: 995.10913, y: 199.75688, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2461,7 +2461,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 20.925}
+  m_AnchoredPosition: {x: 0, y: 4.7138615}
   m_SizeDelta: {x: 800, y: 491.85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &560841705
@@ -3027,7 +3027,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -16.211138}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &688832488
@@ -4661,7 +4661,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -354.6, y: 162.8}
+  m_AnchoredPosition: {x: -354.6, y: 146.58887}
   m_SizeDelta: {x: 65.4108, y: 57.9791}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1122959168
@@ -5104,7 +5104,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -16.211138}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1376477894
@@ -5812,7 +5812,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -88.69382}
+  m_AnchoredPosition: {x: 0, y: -104.90495}
   m_SizeDelta: {x: 0, y: -177.3875}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1641926397
@@ -6436,7 +6436,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 26, y: 77.00099}
+  m_AnchoredPosition: {x: 26, y: 60.789856}
   m_SizeDelta: {x: 485.4138, y: 225}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1791085491
@@ -7279,11 +7279,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57aa3db1100fe39439bd73793c7c695a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelStars: 0
   Stars:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  StarsWin: 0
+  Starshave: 0
 --- !u!1 &1971383443
 GameObject:
   m_ObjectHideFlags: 0
@@ -7421,7 +7422,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8720679677891947579, guid: 0bf94b5ff966311419e4f78fbc0dc0c7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 27.88852
+      value: 11.6773815
       objectReference: {fileID: 0}
     - target: {fileID: 8720679677891947579, guid: 0bf94b5ff966311419e4f78fbc0dc0c7, type: 3}
       propertyPath: m_LocalPosition.z
