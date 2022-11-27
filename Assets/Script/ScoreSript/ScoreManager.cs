@@ -12,16 +12,10 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private Text[] Positions = new Text[5];
 
 
-    // Start is called before the first frame update
+
     void Start()
     {
         _scoreTda.Initialization(SaveDataManager.PlayersRegister);
-
-        for (int i = 0; i < SaveDataManager.PlayersRegister - 1; i++)
-        {
-            String pj = _dataManager.AllUserRegister[i]; 
-            _scoreTda.StackPlayers(SaveDataManager.LoadPlayerData(pj));
-        }
 
         for (int i = 0; i < Positions.Length; i++)
         {
@@ -40,7 +34,7 @@ public class ScoreManager : MonoBehaviour
     {
         if (!_scoreTda.StackEmpty())
         {
-            for (int i = 0; i < SaveDataManager.PlayersRegister - 1; i++)
+            for (int i = 0; i < SaveDataManager.PlayersRegister - 1 ; i++)
             {
                 String pj = _dataManager.AllUserRegister[i]; 
                 _scoreTda.StackPlayers(SaveDataManager.LoadPlayerData(pj));

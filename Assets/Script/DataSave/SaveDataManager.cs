@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -86,11 +87,12 @@ public static class SaveDataManager
         return nameVerificate;
     }
 }
-[System.Serializable]
+[Serializable]
 public class PlayerData
 {
     public string PlayerName;
     public string PlayerPassword;
+    
     public int AllCollectionPlayerStars;
     
     
