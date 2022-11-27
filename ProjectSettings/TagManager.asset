@@ -12,6 +12,7 @@ TagManager:
   - PJ
   - Cheese/CheeseSpawn
   - Cheese/Cheese
+  - vertice
   layers:
   - Default
   - TransparentFX
