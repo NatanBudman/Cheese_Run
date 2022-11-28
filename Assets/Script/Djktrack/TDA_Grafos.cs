@@ -5,21 +5,41 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace _8_Grafos
-{
-    
-    public class GrafoMA : MonoBehaviour
+
+public interface GrafoTDA
+    {
+        void InicializarGrafo();
+        void AgregarVertice(int v);
+        void EliminarVertice(int v);
+        ConjuntoTDA Vertices();
+        void AgregarArista(int v1, int v2);
+        void EliminarArista(int v1, int v2);
+        bool ExisteArista(int v1, int v2);
+        int PesoArista(int v1, int v2);
+    }
+
+    public class GrafoMA : GrafoTDA
     {
         static int n = 100;
         public int[,] MAdy;
         public int[] Etiqs;
         public int cantNodos;
+        public Nodo[] nodos;
+        public int indexNodo;
 
         public void InicializarGrafo()
         {
             MAdy = new int[n, n];
             Etiqs = new int[n];
+            nodos = new Nodo[n];
             cantNodos = 0;
+            indexNodo = 0;
+        }
+
+        public void AgregarNodo(Nodo nodo)
+        {
+            nodos[indexNodo] = nodo;
+            indexNodo++;
         }
 
         public void AgregarVertice(int v)
@@ -30,6 +50,8 @@ namespace _8_Grafos
                 MAdy[cantNodos, i] = 0;
                 MAdy[i, cantNodos] = 0;
             }
+
+        
             cantNodos++;
         }
 
@@ -68,16 +90,15 @@ namespace _8_Grafos
             Vert.InicializarConjunto();
             for (int i = 0; i < cantNodos; i++)
             {
-                Vert.Agregar(Etiqs[i]);
+                Vert.Agregar(nodos[i],Etiqs[i]);
             }
             return Vert;
         }
 
-        public void AgregarArista( int v1, int v2, int peso)
+        public void AgregarArista( int v1, int v2)
         {
             int o = Vert2Indice(v1);
             int d = Vert2Indice(v2);
-            MAdy[o, d] = peso;
         }
 
         public void EliminarArista(int v1, int v2)
@@ -101,4 +122,4 @@ namespace _8_Grafos
             return MAdy[o, d];
         }
     }
- }
+ 

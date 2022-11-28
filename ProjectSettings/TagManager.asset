@@ -13,6 +13,7 @@ TagManager:
   - Cheese/CheeseSpawn
   - Cheese/Cheese
   - vertice
+  - PlayerDij
   layers:
   - Default
   - TransparentFX

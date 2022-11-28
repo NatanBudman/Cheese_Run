@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
+using UnityEngine.UIElements;
 
-namespace _8_Grafos
-{
-    class AlgDijkstra
+
+public class AlgDijkstra
     {
         public static int[] distance;
         public static string[] nodos;
@@ -53,10 +54,7 @@ namespace _8_Grafos
 
             for (int i = 0; i < verticesCount; ++i)
             {
-                // asigno un valor maximo (inalcanzable) como distancia a cada nodo
-                // cualquier camino que se encuentre va a ser menor a ese valor
-                // si no se encuentra un camino, este valor maximo permanece y es el 
-                // indica que no hay ningun camino entre el origen y ese nodo
+             
                 distance[i] = int.MaxValue;
 
                 // seteo en falso al vector que guarda la booleana cuando se encuentra un camino
@@ -107,25 +105,51 @@ namespace _8_Grafos
                             if (j != source && l1[0] == nodos2[j])
                             {
                                 l1.Insert(0, nodos1[j]);
+                                
                                 break;
                             }
                         }
                     }
+
+                    for (int j = 0; j < l1.Count; j++)
+                    {
+                        if (AplicarDijskra.Player.transform.position ==  grafo.nodos[l1[j]].transform.position)
+                        {
+                            continue;
+                        }
+                        Debug.Log("entrer");
+                    }
+
+                   
                     for (int j = 0; j < l1.Count; j++)
                     {
                         if (j == 0)
                         {
                             nodos[i] = l1[j].ToString();
+                            Debug.Log(j);
+                            //Position = grafo.nodos[j].transform.position;
                         }
                         else
                         {
                             nodos[i] += "," + l1[j].ToString();
+                            //Position = grafo.nodos[j].transform.position;
+                            //Debug.Log(grafo.nodos[j].transform.position);
                         }
                     }
                 }
             }
         }
 
+        public static Transform ruta()
+        {
+            Transform pos = null;
+            pos.position = new Vector3(Position.x, Position.y, 0);
+            return pos;
+        }
 
+        public static Vector3 Position
+        {
+            get; set;
+        }
     }
-}
+

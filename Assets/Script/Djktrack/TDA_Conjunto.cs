@@ -4,23 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _8_Grafos
-{
+
     public interface ConjuntoTDA
     {
         void InicializarConjunto();
         bool ConjuntoVacio();
-        void Agregar(int x);
+        void Agregar(Nodo nodo,int x);
         int Elegir();
         void Sacar(int x);
         bool Pertenece(int x);
     }
 
-    public class Nodo
-    {
-        public int info;
-        public Nodo sig;
-    }
+  
 
     // IMPLEMENTACIÓN DINÁMICA //
     public class ConjuntoLD : ConjuntoTDA
@@ -35,15 +30,15 @@ namespace _8_Grafos
         {
             return (c == null);
         }
-        public void Agregar(int x)
+        public void Agregar(Nodo nodo,int x)
         {
             /* Verifica que x no este en el conjunto */
             if (!this.Pertenece(x))
             {
-                Nodo aux = new Nodo();
-                aux.info = x;
-                aux.sig = c;
-                c = aux;
+                
+                nodo.info = x;
+                nodo.sig = c;
+                c = nodo;
             }
         }
         public int Elegir()
@@ -86,7 +81,7 @@ namespace _8_Grafos
         int[] a;
         int cant;
 
-        public void Agregar(int x)
+        public void Agregar(Nodo nodo,int x)
         {
             if (!this.Pertenece(x))
             {
@@ -135,4 +130,4 @@ namespace _8_Grafos
             }
         }
     }
-}
+
