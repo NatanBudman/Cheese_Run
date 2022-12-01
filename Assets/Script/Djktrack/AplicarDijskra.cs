@@ -14,11 +14,24 @@ public class AplicarDijskra : MonoBehaviour
     public static GameObject Player;
 
     [SerializeField] private Nodo[] nodos;
+    
+    GrafoMA grafoEst = new GrafoMA();
+
+    private void Awake()
+    {
+        nodos = new Nodo[GameObject.FindObjectsOfType<Nodo>().Length];
+
+        for (int i = 0; i < nodos.Length; i++)
+        {
+            nodos[i] = GameObject.FindObjectsOfType<Nodo>()[i];
+        }
+    }
+
     private void Start()
     {
             Player = GameObject.FindGameObjectWithTag("PlayerDij");
             
-            GrafoMA grafoEst = new GrafoMA();
+           
             ConjuntoLD conjuntoTa = new ConjuntoLD();
             // inicializo TDA
             grafoEst.InicializarGrafo();
@@ -35,14 +48,12 @@ public class AplicarDijskra : MonoBehaviour
             {
                 conjuntoTa.Agregar(nodos[i], i);
                 grafoEst.AgregarNodo(nodos[i]);
-                
             }
 
             for (int i = 0; i < origen.Length; i++)
             {
                 grafoEst.AgregarArista(origen[i], end[i]);
             }
-
             for (int i = 0; i < grafoEst.cantNodos; i++)
             {
                 for (int j = 0; j < grafoEst.cantNodos; j++)
@@ -53,19 +64,38 @@ public class AplicarDijskra : MonoBehaviour
                         int nodoIni = grafoEst.Etiqs[i];
                         // obtengo la etiqueta del nodo destino, que está en las columnas (j)
                         int nodoFin = grafoEst.Etiqs[j];
+                        
                     }
                 }
             }
 
             // al algoritmo le paso el TDA_Grafo estático con los datos cargados y el vértice origen
             AlgDijkstra.Dijkstra(grafoEst, 1);
-
+            
         }
 
+    private int j = 0;
     private void Update()
     {
-        Player.transform.position = Vector2.MoveTowards(Player.transform.position,
-            AlgDijkstra.Position, 4 * Time.deltaTime);
+        if (j < AlgDijkstra.recorridoNodos.Length )
+        {
+            if (Player.transform.position != AlgDijkstra.recorridoNodos[j].transform.position)
+            {
+                if (Player.transform.position != grafoEst.nodos[end[0]].transform.position )
+                {
+                    Player.transform.position = Vector2.MoveTowards(Player.transform.position,
+                                        AlgDijkstra.recorridoNodos[j].transform.position, 4 * Time.deltaTime);
+                                   Debug.Log(AlgDijkstra.recorridoNodos[j]);
+                }
+                
+            }else
+            {
+                j++;
+            }
+            
+        }
+        
+        
     }
 }
         

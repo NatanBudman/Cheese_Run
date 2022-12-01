@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 
-    public interface ConjuntoTDA
+public interface ConjuntoTDA
     {
         void InicializarConjunto();
         bool ConjuntoVacio();
@@ -76,7 +77,7 @@ using System.Threading.Tasks;
     }
 
     // IMPLEMENTACIÓN ESTÁTICA //
-    public class ConjuntoTA : ConjuntoTDA
+    public class ConjuntoTA :ConjuntoTDA
     {
         int[] a;
         int cant;
