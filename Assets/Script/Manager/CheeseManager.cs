@@ -57,7 +57,7 @@ public class CheeseManager : MonoBehaviour
         {
             var ChildsPool = Pooling.Poolparent.GetChild(i).gameObject;
             // Agrega los quesos del pool a la cola
-            if (ChildsPool.GetComponent<Cheese>() != null) _cheesePìla.StackCheese(ChildsPool);
+            if (ChildsPool.GetComponent<Cheese>() != null ) _cheesePìla.StackCheese(ChildsPool);
 
         }
     }

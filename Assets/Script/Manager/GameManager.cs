@@ -17,7 +17,8 @@ public class GameManager : MonoBehaviour
     #region Time
 
       public float GameTime;
-      private float CurrentGammeTime;
+      public float CurrentGameTime;
+      private float TimeProvisional;
 
     #endregion
 
@@ -51,9 +52,9 @@ public class GameManager : MonoBehaviour
         
         PauseGame(false);
 
-        CurrentGammeTime = GameTime;
-        Seconds = CurrentGammeTime;
-        
+        CurrentGameTime = GameTime;
+        Seconds = CurrentGameTime;
+        TimeProvisional = GameTime;
         _points = FindObjectOfType<Points>();
         
         _playerController = FindObjectOfType<PlayerController>();
@@ -61,6 +62,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+
         // Verfica si esta vivo el player
         if (_playerController.gameObject.activeSelf == false) isPlayerLive = false;
         else isPlayerLive = true;
@@ -81,7 +83,7 @@ public class GameManager : MonoBehaviour
         }
 
         //  Level Status
-        if (!isPlayerLive || CurrentGammeTime < 1 || CheeseRecolected >= _points.CheeseNeed)
+        if (!isPlayerLive || CurrentGameTime < 1 || CheeseRecolected >= _points.CheeseNeed)
         {
             isFinishGame = true;
         }
@@ -171,12 +173,24 @@ public class GameManager : MonoBehaviour
         float Seconds;
         private void CanvasGameTime()
         {
+            
             // Game Time
             if (!isFinishGame)
             {
-                CurrentGammeTime -= Time.deltaTime;
+                CurrentGameTime -= Time.deltaTime;
+                TimeProvisional -= Time.deltaTime;
                 Seconds -= Time.deltaTime;
             }
+
+            if (TimeProvisional != CurrentGameTime)
+            {
+                var timeCurrent =  CurrentGameTime;
+                var timeSeconds = Seconds + (Minute * 60);
+                var time = timeCurrent - timeSeconds;
+                Seconds += time;
+                TimeProvisional = CurrentGameTime;
+            }
+
             
             if (Seconds > 60 )
             {

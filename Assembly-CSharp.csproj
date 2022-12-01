@@ -55,8 +55,11 @@
      <Compile Include="Assets\Script\PowersTDA\IPowersQueue.cs" />
      <Compile Include="Assets\Script\LoadScripts\LevelLoad.cs" />
      <Compile Include="Assets\Script\Strategy\ICheesePila.cs" />
+     <Compile Include="Assets\Script\Canvas\Volumen.cs" />
      <Compile Include="Assets\Script\Manager\GameManager.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
+     <Compile Include="Assets\Script\Djktrack\Nodo.cs" />
+     <Compile Include="Assets\Script\Powers\PowersMovement.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
@@ -66,12 +69,16 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
      <Compile Include="Assets\Script\DataSave\LevelInfo.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
+     <Compile Include="Assets\Script\ObstaclePila.cs" />
+     <Compile Include="Assets\Script\Djktrack\MoveDjijktra\nav.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
+     <Compile Include="Assets\Script\Djktrack\AlgDijkstra.cs" />
      <Compile Include="Assets\Script\Canvas\LevelCanvas.cs" />
      <Compile Include="Assets\Script\Powers\Powers.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
      <Compile Include="Assets\Script\Canvas\Menu.cs" />
      <Compile Include="Assets\Script\LevelButton.cs" />
+     <Compile Include="Assets\Script\Djktrack\AplicarDijskra.cs" />
      <Compile Include="Assets\Script\LoadScripts\LoadingScript.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
@@ -84,7 +91,10 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
      <Compile Include="Assets\Script\testeoScript.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
+     <Compile Include="Assets\Script\Djktrack\TDA_Conjunto.cs" />
+     <Compile Include="Assets\Script\Djktrack\MoveDjijktra\PlayerMovWhitDijkar.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
+     <Compile Include="Assets\Script\IObstaclePila.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
@@ -100,6 +110,7 @@
      <Compile Include="Assets\Script\Pool\GetIDScript.cs" />
      <Compile Include="Assets\Script\PlayerController.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
+     <Compile Include="Assets\Script\Djktrack\TDA_Grafos.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
      <Compile Include="Assets\Script\CheeseTDA\CheesePìla.cs" />
