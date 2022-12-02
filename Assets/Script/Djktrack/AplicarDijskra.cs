@@ -5,26 +5,30 @@ using UnityEngine;
 
 public class AplicarDijskra : MonoBehaviour
 {
-    [SerializeField] private int[] origen;
+    public DijstraNatan DijstraNatan;
+    public int[] origen;
 
-    [SerializeField] private int[] end;
+    public int[] end;
     
-    [SerializeField] private  int[] vertices;
+    public  int[] vertices;
 
     public static GameObject Player;
 
-    [SerializeField] private Nodo[] nodos;
+    public Nodo[] nodos;
     
     GrafoMA grafoEst = new GrafoMA();
 
     private void Awake()
     {
+        /*
         nodos = new Nodo[GameObject.FindObjectsOfType<Nodo>().Length];
 
         for (int i = 0; i < nodos.Length; i++)
         {
             nodos[i] = GameObject.FindObjectsOfType<Nodo>()[i];
         }
+        */
+        DijstraNatan.InicializarDijskar();
     }
 
     private void Start()
@@ -72,20 +76,21 @@ public class AplicarDijskra : MonoBehaviour
             // al algoritmo le paso el TDA_Grafo estático con los datos cargados y el vértice origen
             AlgDijkstra.Dijkstra(grafoEst, 1);
             
+            DijstraNatan.Dijskra(grafoEst,nodos[origen[0]],nodos[end[0]]);
         }
 
     private int j = 0;
     private void Update()
     {
-        if (j < AlgDijkstra.recorridoNodos.Length )
+        
+        if (j < DijstraNatan.NodosRecorrer.Length)
         {
-            if (Player.transform.position != AlgDijkstra.recorridoNodos[j].transform.position)
+            if (Player.transform.position != nodos[DijstraNatan.NodosRecorrer[j]].transform.position)
             {
                 if (Player.transform.position != grafoEst.nodos[end[0]].transform.position )
                 {
                     Player.transform.position = Vector2.MoveTowards(Player.transform.position,
-                                        AlgDijkstra.recorridoNodos[j].transform.position, 4 * Time.deltaTime);
-                                   Debug.Log(AlgDijkstra.recorridoNodos[j]);
+                        nodos[DijstraNatan.NodosRecorrer[j]].transform.position, 4 * Time.deltaTime);
                 }
                 
             }else
