@@ -14,6 +14,8 @@ public class AlgDijkstra
         public static string[] nodos;
         public static Nodo[] recorridoNodos;
         private static int indeRecorrido = 0;
+        
+        
 
         private static int MinimumDistance(int[] distance, bool[] shortestPathTreeSet, int verticesCount)
         {
@@ -46,6 +48,10 @@ public class AlgDijkstra
 
             // obtengo el indice del nodo elegido como origen a partir de su valor
             source = grafo.Vert2Indice(source);
+            
+            recorridoNodos = new Nodo[verticesCount];
+
+            
 
             // vector donde se van a guardar los resultados de las distancias entre 
             // el origen y cada vertice del grafo
@@ -88,18 +94,14 @@ public class AlgDijkstra
                         // guardo los nodos para reconstruir el camino
                         nodos1[v] = grafo.Etiqs[u];
                         nodos2[v] = grafo.Etiqs[v];
+                        Debug.Log(grafo.nodos[u]);
+                        
                     }   
                 }
             }
 
             // construyo camino de nodos
             nodos = new string[verticesCount];
-            recorridoNodos = new Nodo[verticesCount];
-
-            for (int i = 0; i < verticesCount; i++)
-            {
-              //  recorridoNodos
-            }
             
             int nodOrig = grafo.Etiqs[source];
             for (int i = 0; i < verticesCount; i++)
@@ -117,11 +119,6 @@ public class AlgDijkstra
                             if (j != source && l1[0] == nodos2[j])
                             {
                                 l1.Insert(0, nodos1[j]);
-                                recorridoNodos[indeRecorrido] = grafo.nodos[nodos1[j]];
-                                Debug.Log(recorridoNodos[indeRecorrido]);
-                                indeRecorrido++;
-                                
-                                
                                 break;
                             }
                         }
@@ -132,12 +129,10 @@ public class AlgDijkstra
                         if (j == 0)
                         {
                             nodos[i] = l1[j].ToString();
-                            Debug.Log(nodos[i]);
                         }
                         else
                         {
                             nodos[i] += "," + l1[j].ToString();
-                            Debug.Log(nodos[i]);
                         }
                     }
                 }
