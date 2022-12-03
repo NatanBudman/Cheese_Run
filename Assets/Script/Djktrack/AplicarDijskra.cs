@@ -28,11 +28,18 @@ public class AplicarDijskra : MonoBehaviour
             nodos[i] = GameObject.FindObjectsOfType<Nodo>()[i];
         }
         */
+   
+        
         DijstraNatan.InicializarDijskar();
     }
 
     private void Start()
     {
+        
+            var random = UnityEngine.Random.Range(1,nodos.Length);
+            nodos[random].transform.GetChild(0).gameObject.SetActive(true);
+            end[0] = random;
+        
             Player = GameObject.FindGameObjectWithTag("PlayerDij");
             
            
