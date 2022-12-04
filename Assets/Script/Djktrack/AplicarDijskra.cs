@@ -31,6 +31,7 @@ public class AplicarDijskra : MonoBehaviour
    
         
         DijstraNatan.InicializarDijskar();
+        
     }
 
     private void Start()
@@ -83,6 +84,9 @@ public class AplicarDijskra : MonoBehaviour
             // al algoritmo le paso el TDA_Grafo estático con los datos cargados y el vértice origen
             AlgDijkstra.Dijkstra(grafoEst, 1);
             
+            //Linkeo nodos adyacentes entre si
+            DijstraNatan.LinkNodes();
+            //armo el recorrido
             DijstraNatan.Dijskra(grafoEst,nodos[origen[0]],nodos[end[0]]);
         }
 
@@ -94,12 +98,17 @@ public class AplicarDijskra : MonoBehaviour
         {
             if (Player.transform.position != nodos[DijstraNatan.NodosRecorrer[j]].transform.position)
             {
-                if (Player.transform.position != grafoEst.nodos[end[0]].transform.position )
+                if (Player.transform.position != grafoEst.nodos[end[n]].transform.position )
                 {
                     Player.transform.position = Vector2.MoveTowards(Player.transform.position,
                         nodos[DijstraNatan.NodosRecorrer[j]].transform.position, 4 * Time.deltaTime);
+                   
                 }
-                
+                else
+                {
+                    FindNewObjetive();
+                }
+
             }else
             {
                 j++;
@@ -107,7 +116,34 @@ public class AplicarDijskra : MonoBehaviour
             
         }
         
-        
+    }
+
+    private int n = 0;
+    private void FindNewObjetive()
+    {
+        if (n < end.Length - 1)
+        {
+             n++;
+             var random = UnityEngine.Random.Range(1,nodos.Length);
+             
+             if (random != end[n])
+             {
+                 end[n] = random;
+                 nodos[end[n]].transform.GetChild(0).gameObject.SetActive(true);
+                 DijstraNatan.Dijskra(grafoEst,nodos[end[n - 1]],nodos[end[n]]);
+                 j = 0; 
+             }
+           
+        }
+      
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.CompareTag("Cheese/Cheese"))
+        {
+            col.gameObject.SetActive(false);
+        }
     }
 }
         

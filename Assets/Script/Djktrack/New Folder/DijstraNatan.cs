@@ -17,7 +17,7 @@ public class DijstraNatan : MonoBehaviour
     private Nodo sig;
     private Nodo[,] AdyNodos;
 
-    public bool isAutoFinding = true;
+    public bool isAutoRoute = true;
     public bool isAutoFindAdyNodos = true;
     public bool isIgnoreWalls = true;
     
@@ -27,68 +27,67 @@ public class DijstraNatan : MonoBehaviour
         AdyNodos = new Nodo[AplicarDijskra.nodos.Length,100];
     }
 
+    public void LinkNodes()
+    {
+          if (isAutoFindAdyNodos)
+          {
+              // busco nodos adyacentes
+            
+              for (int nodo = 0; nodo <AplicarDijskra.nodos.Length; nodo++)
+              {
+                  for (int nodoAy = 0; nodoAy < AplicarDijskra.nodos.Length; nodoAy++)
+                  {
+                      if (Vector2.Distance(AplicarDijskra.nodos[nodo].transform.position,AplicarDijskra.nodos[nodoAy].transform.position) <
+                          DistamciaMinNodos)
+                      {
+                          if (!isIgnoreWalls)
+                          {
+                                 
+                              Vector2 direction = AplicarDijskra.nodos[nodo].transform.position - AplicarDijskra.nodos[nodoAy].transform.position 
+                                  ;
+                              RaycastHit2D hit = Physics2D.Raycast(AplicarDijskra.nodos[nodo].transform.position,direction,DistamciaMinNodos,LayerMask.GetMask("Default"));
+                                 
+                              if (!hit.collider.gameObject.CompareTag("wall"))
+                              {
+                                  AdyNodos[AplicarDijskra.nodos[nodo].info, AplicarDijskra.nodos[nodoAy].info] = AplicarDijskra.nodos[nodoAy] ;
+                                  Debug.DrawRay(AplicarDijskra.nodos[nodo].transform.position,direction,Color.red);
 
+                              }
+                              else
+                              {
+                                  Debug.Log("hay pared");
+                              }
+                                
+
+
+                          }
+                          else
+                          {
+                              AdyNodos[AplicarDijskra.nodos[nodo].info, AplicarDijskra.nodos[nodoAy].info] = AplicarDijskra.nodos[nodoAy] ;
+                              // Debug.Log(nodo + "," + nodoAy + "=" + AdyNodos[nodo,nodoAy].ToString());
+                          }
+                             
+
+                             
+                      }  else
+                      {
+                          AdyNodos[AplicarDijskra.nodos[nodo].info, AplicarDijskra.nodos[nodoAy].info] = null ;
+                      }
+                               
+            
+            
+                  }
+                     
+              }
+                 
+             
+          } 
+    }
 
     public void RecorridoArmado( Nodo end)
     {
         
-
-        if (isAutoFindAdyNodos)
-        {
-                // busco nodos adyacentes
-            
-                 for (int nodo = 0; nodo <AplicarDijskra.nodos.Length; nodo++)
-                 {
-                     for (int nodoAy = 0; nodoAy < AplicarDijskra.nodos.Length; nodoAy++)
-                     {
-                         if (Vector2.Distance(AplicarDijskra.nodos[nodo].transform.position,AplicarDijskra.nodos[nodoAy].transform.position) <
-                             DistamciaMinNodos)
-                         {
-                             if (!isIgnoreWalls)
-                             {
-                                 
-                                 Vector2 direction = AplicarDijskra.nodos[nodo].transform.position - AplicarDijskra.nodos[nodoAy].transform.position 
-                                                                 ;
-                                 RaycastHit2D hit = Physics2D.Raycast(AplicarDijskra.nodos[nodo].transform.position,direction,DistamciaMinNodos,LayerMask.GetMask("Default"));
-                                 
-                                 if (!hit.collider.gameObject.CompareTag("wall"))
-                                 {
-                                     AdyNodos[AplicarDijskra.nodos[nodo].info, AplicarDijskra.nodos[nodoAy].info] = AplicarDijskra.nodos[nodoAy] ;
-                                     Debug.DrawRay(AplicarDijskra.nodos[nodo].transform.position,direction,Color.red);
-
-                                 }
-                                 else
-                                 {
-                                     Debug.Log("hay pared");
-                                 }
-                                
-
-
-                             }
-                             else
-                             {
-                                 AdyNodos[AplicarDijskra.nodos[nodo].info, AplicarDijskra.nodos[nodoAy].info] = AplicarDijskra.nodos[nodoAy] ;
-                                                             // Debug.Log(nodo + "," + nodoAy + "=" + AdyNodos[nodo,nodoAy].ToString());
-                             }
-                             
-
-                             
-                         }  else
-                         {
-                             AdyNodos[AplicarDijskra.nodos[nodo].info, AplicarDijskra.nodos[nodoAy].info] = null ;
-                         }
-                               
-            
-            
-                     }
-                     
-                 }
-                 
-             
-        } 
-
-
-        if (isAutoFinding)
+        if (isAutoRoute)
         {
             // busco el nodo adyacente mas cercano al target
             //filtro los nodos lejanos al target
@@ -141,6 +140,7 @@ public class DijstraNatan : MonoBehaviour
                                  
                     if (origen.info == target.info)
                     {
+                        indexRecorrerNodos = 0;
                         break;
                     }
                          
