@@ -822,13 +822,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 197546272}
+  - component: {fileID: 197546273}
   m_Layer: 0
   m_Name: Levels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &197546272
 Transform:
   m_ObjectHideFlags: 0
@@ -844,9 +845,27 @@ Transform:
   - {fileID: 616815963}
   - {fileID: 1479879655}
   - {fileID: 2061309845}
+  - {fileID: 827825077}
   m_Father: {fileID: 320689731}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &197546273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197546271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecb6dc14ba637c8408d9aed80c866473, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelPanel: {fileID: 1479879651}
+  levels:
+  - {fileID: 347180055}
+  - {fileID: 1225310484}
+  - {fileID: 1940784820}
 --- !u!4 &218094810 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8720679677891947579, guid: 0bf94b5ff966311419e4f78fbc0dc0c7, type: 3}
@@ -1679,7 +1698,7 @@ MonoBehaviour:
   PlayerName: {fileID: 105873989}
   PlayerPassWord: {fileID: 1388470558}
   MaxLetters: 20
-  _levelData: {fileID: 550400823}
+  levelsDataManager: {fileID: 0}
   _playerData:
     PlayerName: 
     PlayerPassword: 
@@ -1891,19 +1910,19 @@ RectTransform:
   m_GameObject: {fileID: 347180053}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.400001, y: 2.400001, z: 2.400001}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 221943853}
   - {fileID: 931261068}
   - {fileID: 1682841132}
   - {fileID: 1810784138}
-  m_Father: {fileID: 1479879655}
-  m_RootOrder: 1
+  m_Father: {fileID: 827825077}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 313.6678, y: -115.455795}
+  m_AnchoredPosition: {x: -90.98557, y: -48.88748}
   m_SizeDelta: {x: 100, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &347180055
@@ -1918,11 +1937,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57aa3db1100fe39439bd73793c7c695a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelStars: 0
   Stars:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  StarsWin: 0
+  Starshave: 0
+  Level: 2
 --- !u!114 &347180056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3644,6 +3665,40 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 815594377}
   m_CullTransparentMesh: 1
+--- !u!1 &827825076
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 827825077}
+  m_Layer: 0
+  m_Name: AlmacenDeLevels
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &827825077
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827825076}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1940784815}
+  - {fileID: 1225310483}
+  - {fileID: 347180054}
+  m_Father: {fileID: 197546272}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &828753488
 GameObject:
   m_ObjectHideFlags: 0
@@ -5334,19 +5389,19 @@ RectTransform:
   m_GameObject: {fileID: 1225310482}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.400001, y: 2.400001, z: 2.400001}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1447086797}
   - {fileID: 1592078684}
   - {fileID: 1334437244}
   - {fileID: 828753489}
-  m_Father: {fileID: 1479879655}
-  m_RootOrder: 2
+  m_Father: {fileID: 827825077}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 313.6678, y: -115.455795}
+  m_AnchoredPosition: {x: -246.9856, y: -48.88748}
   m_SizeDelta: {x: 100, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1225310484
@@ -5361,11 +5416,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57aa3db1100fe39439bd73793c7c695a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelStars: 0
   Stars:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  StarsWin: 0
+  Starshave: 0
+  Level: 3
 --- !u!114 &1225310485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6186,10 +6243,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.4000006, y: 2.4000006, z: 2.4000006}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1940784815}
-  - {fileID: 347180054}
-  - {fileID: 1225310483}
+  m_Children: []
   m_Father: {fileID: 197546272}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8068,19 +8122,19 @@ RectTransform:
   m_GameObject: {fileID: 1940784814}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.400001, y: 2.400001, z: 2.400001}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 797117770}
   - {fileID: 1545342346}
   - {fileID: 649859994}
   - {fileID: 656930586}
-  m_Father: {fileID: 1479879655}
+  m_Father: {fileID: 827825077}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 313.6678, y: -115.455795}
+  m_AnchoredPosition: {x: -402.98566, y: -48.88748}
   m_SizeDelta: {x: 100, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1940784816
@@ -8202,11 +8256,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57aa3db1100fe39439bd73793c7c695a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelStars: 0
   Stars:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  StarsWin: 0
+  Starshave: 0
+  Level: 1
 --- !u!1 &1971383443
 GameObject:
   m_ObjectHideFlags: 0
@@ -8332,7 +8388,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8720679677891947576, guid: 0bf94b5ff966311419e4f78fbc0dc0c7, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8720679677891947579, guid: 0bf94b5ff966311419e4f78fbc0dc0c7, type: 3}
       propertyPath: m_RootOrder

@@ -84,6 +84,7 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
      <Compile Include="Assets\Script\ScoreSript\ScoreTDA.cs" />
+     <Compile Include="Assets\Script\QuickSort\AplicarQuickSort.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
      <Compile Include="Assets\Script\Pool\Pooling.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
@@ -94,6 +95,7 @@
      <Compile Include="Assets\Script\Djktrack\TDA_Conjunto.cs" />
      <Compile Include="Assets\Script\Djktrack\MoveDjijktra\PlayerMovWhitDijkar.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
+     <Compile Include="Assets\Script\QuickSort\QuickSort.cs" />
      <Compile Include="Assets\Script\IObstaclePila.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
