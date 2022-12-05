@@ -23,7 +23,12 @@ public class DijstraNatan : MonoBehaviour
     
     public void InicializarDijskar()
     {
-        NodosRecorrer = new int[100];
+        if (isAutoRoute)
+        {
+            NodosRecorrer = new int[100];
+        }
+
+        
         AdyNodos = new Nodo[AplicarDijskra.nodos.Length,100];
     }
 
