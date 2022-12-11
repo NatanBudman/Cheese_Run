@@ -104,10 +104,6 @@ public class AplicarDijskra : MonoBehaviour
                         nodos[DijstraNatan.NodosRecorrer[j]].transform.position, 4 * Time.deltaTime);
                    
                 }
-                else
-                {
-                    FindNewObjetive();
-                }
 
             }else
             {
@@ -119,16 +115,15 @@ public class AplicarDijskra : MonoBehaviour
     }
 
     private int n = 0;
-    private void FindNewObjetive()
+    public void FindNewObjetive(int nodoInf)
     {
         if (n < end.Length - 1)
         {
              n++;
-             var random = UnityEngine.Random.Range(1,nodos.Length);
              
-             if (random != end[n])
+             if (nodoInf != end[n])
              {
-                 end[n] = random;
+                 end[n] = nodoInf;
                  nodos[end[n]].transform.GetChild(0).gameObject.SetActive(true);
                  DijstraNatan.Dijskra(grafoEst,nodos[end[n - 1]],nodos[end[n]]);
                  j = 0; 
