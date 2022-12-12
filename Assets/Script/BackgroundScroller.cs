@@ -8,8 +8,11 @@ public class BackgroundScroller : MonoBehaviour
 {
     public BoxCollider2D colider;
     public Rigidbody2D rb;
+    private Camera mainCamera;
+    public Transform ResetPos;
 
     private float width;
+    [SerializeField]private float ImgDistance = 25;
     public float scrollSpeed = -4f;
 
     // Start is called before the first frame update
@@ -17,8 +20,9 @@ public class BackgroundScroller : MonoBehaviour
     {
         colider = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
+        mainCamera = Camera.main;
 
-        width = colider.size.x;
+        width = mainCamera.transform.position.x - ImgDistance;
         colider.enabled = false;
 
         rb.velocity = new Vector2(scrollSpeed, 0);
@@ -28,10 +32,10 @@ public class BackgroundScroller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.x < -width)
+        if (transform.position.x < width)
         {
-            Vector2 resetPosition = new Vector2(width * 2f, 0);
-            transform.position = (Vector2)transform.position + resetPosition;
+            
+            transform.position = ResetPos.position;
             ResetObstacle();
         }
     }
