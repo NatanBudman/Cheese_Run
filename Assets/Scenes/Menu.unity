@@ -1679,7 +1679,7 @@ MonoBehaviour:
   PlayerName: {fileID: 105873989}
   PlayerPassWord: {fileID: 1388470558}
   MaxLetters: 20
-  _levelData: {fileID: 550400823}
+  levelsDataManager: {fileID: 0}
   _playerData:
     PlayerName: 
     PlayerPassword: 
@@ -1918,11 +1918,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57aa3db1100fe39439bd73793c7c695a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelStars: 0
   Stars:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  StarsWin: 0
+  Starshave: 0
 --- !u!114 &347180056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5361,11 +5362,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57aa3db1100fe39439bd73793c7c695a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelStars: 0
   Stars:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  StarsWin: 0
+  Starshave: 0
 --- !u!114 &1225310485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8202,11 +8204,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57aa3db1100fe39439bd73793c7c695a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelStars: 0
   Stars:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  StarsWin: 0
+  Starshave: 0
 --- !u!1 &1971383443
 GameObject:
   m_ObjectHideFlags: 0
