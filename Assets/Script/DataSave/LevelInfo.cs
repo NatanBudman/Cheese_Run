@@ -8,6 +8,7 @@ public class LevelInfo : MonoBehaviour
     public GameObject[] Stars = new GameObject[3];
     public int StarsWin;
     public int Starshave;
+    public int Level;
     private readonly int _maxStarsWin = 3;
 
     private void Update()

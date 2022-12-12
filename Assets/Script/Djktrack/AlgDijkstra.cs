@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,11 +12,16 @@ public class AlgDijkstra
     {
         public static int[] distance;
         public static string[] nodos;
+        public static Nodo[] recorridoNodos;
+        private static int indeRecorrido = 0;
+        
+        
 
         private static int MinimumDistance(int[] distance, bool[] shortestPathTreeSet, int verticesCount)
         {
             int min = int.MaxValue;
             int minIndex = 0;
+            indeRecorrido = 0;
 
             for (int v = 0; v < verticesCount; ++v)
             {
@@ -42,6 +48,10 @@ public class AlgDijkstra
 
             // obtengo el indice del nodo elegido como origen a partir de su valor
             source = grafo.Vert2Indice(source);
+            
+            recorridoNodos = new Nodo[verticesCount];
+
+            
 
             // vector donde se van a guardar los resultados de las distancias entre 
             // el origen y cada vertice del grafo
@@ -84,15 +94,19 @@ public class AlgDijkstra
                         // guardo los nodos para reconstruir el camino
                         nodos1[v] = grafo.Etiqs[u];
                         nodos2[v] = grafo.Etiqs[v];
+                        Debug.Log(grafo.nodos[u]);
+                        
                     }   
                 }
             }
 
             // construyo camino de nodos
             nodos = new string[verticesCount];
+            
             int nodOrig = grafo.Etiqs[source];
             for (int i = 0; i < verticesCount; i++)
             {
+                
                 if (nodos1[i] != -1)
                 {
                     List<int> l1 = new List<int>();
@@ -105,51 +119,25 @@ public class AlgDijkstra
                             if (j != source && l1[0] == nodos2[j])
                             {
                                 l1.Insert(0, nodos1[j]);
-                                
                                 break;
                             }
                         }
                     }
-
-                    for (int j = 0; j < l1.Count; j++)
-                    {
-                        if (AplicarDijskra.Player.transform.position ==  grafo.nodos[l1[j]].transform.position)
-                        {
-                            continue;
-                        }
-                        Debug.Log("entrer");
-                    }
-
-                   
+                    
                     for (int j = 0; j < l1.Count; j++)
                     {
                         if (j == 0)
                         {
                             nodos[i] = l1[j].ToString();
-                            Debug.Log(j);
-                            //Position = grafo.nodos[j].transform.position;
                         }
                         else
                         {
                             nodos[i] += "," + l1[j].ToString();
-                            //Position = grafo.nodos[j].transform.position;
-                            //Debug.Log(grafo.nodos[j].transform.position);
                         }
                     }
                 }
             }
         }
-
-        public static Transform ruta()
-        {
-            Transform pos = null;
-            pos.position = new Vector3(Position.x, Position.y, 0);
-            return pos;
-        }
-
-        public static Vector3 Position
-        {
-            get; set;
-        }
+        
     }
 

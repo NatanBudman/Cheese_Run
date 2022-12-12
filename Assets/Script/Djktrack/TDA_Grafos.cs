@@ -15,7 +15,6 @@ public interface GrafoTDA
         void AgregarArista(int v1, int v2);
         void EliminarArista(int v1, int v2);
         bool ExisteArista(int v1, int v2);
-        int PesoArista(int v1, int v2);
     }
 
     public class GrafoMA : GrafoTDA
@@ -115,11 +114,6 @@ public interface GrafoTDA
             return MAdy[o, d] != 0;
         }
 
-        public int PesoArista(int v1, int v2)
-        {
-            int o = Vert2Indice(v1);
-            int d = Vert2Indice(v2);
-            return MAdy[o, d];
-        }
+       
     }
  
